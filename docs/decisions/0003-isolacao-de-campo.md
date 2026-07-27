@@ -5,7 +5,8 @@
 
 ## Decisão
 
-As duas RS-485 e o CAN terão domínios isolados. As quatro entradas digitais
+As duas RS-485 usam ISOW1412 e o CAN usa ISOW1044, todos com potência isolada
+integrada e domínio próprio. As quatro entradas digitais
 serão isoladas da lógica. As analógicas compartilharão referência de campo e não
 serão isoladas individualmente no P0.
 

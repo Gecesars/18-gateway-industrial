@@ -1,0 +1,182 @@
+Reference,Value,Footprint,Manufacturer,MPN,Block,DNP,Description
+BT1,CR1220,Battery:BatteryHolder_Keystone_3000_1x12mm,Keystone,3000,STORAGE_SERVICE,no,
+C1,100uF 63V,Capacitor_SMD:C_1210_3225Metric,TDK,X7R industrial equivalent,POWER,no,
+C10,10uF 10V,Capacitor_SMD:C_0603_1608Metric,TDK,C1608 X7R series,POWER,no,
+C11,12pF C0G,Capacitor_SMD:C_0603_1608Metric,TDK,C1608 series,CONTROLLER,no,
+C12,12pF C0G,Capacitor_SMD:C_0603_1608Metric,TDK,C1608 series,CONTROLLER,no,
+C13,12pF C0G,Capacitor_SMD:C_0603_1608Metric,TDK,C1608 series,CONTROLLER,no,
+C14,12pF C0G,Capacitor_SMD:C_0603_1608Metric,TDK,C1608 series,CONTROLLER,no,
+C15,100nF,Capacitor_SMD:C_0603_1608Metric,TDK,C1608 series,CONTROLLER,no,
+C16,100nF,Capacitor_SMD:C_0603_1608Metric,TDK,C1608 series,CONTROLLER,no,
+C17,100nF,Capacitor_SMD:C_0603_1608Metric,TDK,C1608 series,CONTROLLER,no,
+C18,100nF,Capacitor_SMD:C_0603_1608Metric,TDK,C1608 series,CONTROLLER,no,
+C19,100nF,Capacitor_SMD:C_0603_1608Metric,TDK,C1608 series,CONTROLLER,no,
+C2,1uF 100V X7R,Capacitor_SMD:C_1210_3225Metric,TDK,X7R industrial equivalent,POWER,no,
+C20,100nF,Capacitor_SMD:C_0603_1608Metric,TDK,C1608 series,CONTROLLER,no,
+C21,100nF,Capacitor_SMD:C_0603_1608Metric,TDK,C1608 series,CONTROLLER,no,
+C22,100nF,Capacitor_SMD:C_0603_1608Metric,TDK,C1608 series,CONTROLLER,no,
+C23,4.7uF,Capacitor_SMD:C_0603_1608Metric,TDK,C1608 series,CONTROLLER,no,
+C24,2.2uF low-ESR,Capacitor_SMD:C_0603_1608Metric,TDK,C1608 series,CONTROLLER,no,
+C25,2.2uF low-ESR,Capacitor_SMD:C_0603_1608Metric,TDK,C1608 series,CONTROLLER,no,
+C26,100nF,Capacitor_SMD:C_0603_1608Metric,TDK,C1608 series,CONTROLLER,no,
+C27,1uF,Capacitor_SMD:C_0603_1608Metric,TDK,C1608 series,CONTROLLER,no,
+C28,100nF,Capacitor_SMD:C_0603_1608Metric,TDK,C1608 series,CONTROLLER,no,
+C29,100nF,Capacitor_SMD:C_0603_1608Metric,TDK,C1608 series,CONTROLLER,no,
+C3,100nF 100V,Capacitor_SMD:C_0603_1608Metric,TDK,C1608 X7R series,POWER,no,
+C30,100nF,Capacitor_SMD:C_0603_1608Metric,TDK,C1608X7R1H104K080AA,STORAGE_SERVICE,no,MLCC; verify voltage derating
+C31,100nF,Capacitor_SMD:C_0603_1608Metric,TDK,C1608X7R1H104K080AA,STORAGE_SERVICE,no,MLCC; verify voltage derating
+C32,100nF,Capacitor_SMD:C_0603_1608Metric,TDK,C1608X7R1H104K080AA,STORAGE_SERVICE,no,MLCC; verify voltage derating
+C33,1uF 10V,Capacitor_SMD:C_0603_1608Metric,TDK,C1608 X7R series,POWER,no,
+C4,10uF 16V,Capacitor_SMD:C_0603_1608Metric,TDK,C1608 X7R series,POWER,no,
+C40,12pF C0G,Capacitor_SMD:C_0603_1608Metric,TDK,C1608C0G1H120J080AA,NETWORK,no,MLCC; verify voltage derating
+C41,12pF C0G,Capacitor_SMD:C_0603_1608Metric,TDK,C1608C0G1H120J080AA,NETWORK,no,MLCC; verify voltage derating
+C42,1uF,Capacitor_SMD:C_0603_1608Metric,TDK,C1608X7R1E105K080AC,NETWORK,no,MLCC; verify voltage derating
+C43,100nF,Capacitor_SMD:C_0603_1608Metric,TDK,C1608X7R1H104K080AA,NETWORK,no,MLCC; verify voltage derating
+C44,100nF,Capacitor_SMD:C_0603_1608Metric,TDK,C1608X7R1H104K080AA,NETWORK,no,MLCC; verify voltage derating
+C45,10uF,Capacitor_SMD:C_0603_1608Metric,TDK,C1608X5R1A106M080AC,NETWORK,no,MLCC; verify voltage derating
+C46,10uF,Capacitor_SMD:C_0805_2012Metric,TDK,C1608X5R1A106M080AC,NETWORK,yes,MLCC; verify voltage derating
+C5,10uF 16V,Capacitor_SMD:C_0603_1608Metric,TDK,C1608 X7R series,POWER,no,
+C6,4.7nF,Capacitor_SMD:C_0603_1608Metric,TDK,C1608 X7R series,POWER,no,
+C60,10nF C0G,Capacitor_SMD:C_0603_1608Metric,TDK,C1608C0G1H103J080AA,ANALOG,no,
+C61,10nF C0G,Capacitor_SMD:C_0603_1608Metric,TDK,C1608C0G1H103J080AA,ANALOG,no,
+C62,10nF C0G,Capacitor_SMD:C_0603_1608Metric,TDK,C1608C0G1H103J080AA,ANALOG,no,
+C63,10nF C0G,Capacitor_SMD:C_0603_1608Metric,TDK,C1608C0G1H103J080AA,ANALOG,no,
+C64,10uF,Capacitor_SMD:C_0603_1608Metric,TDK,C1608X5R1A106M080AC,ANALOG,no,MLCC; verify voltage derating
+C65,100nF,Capacitor_SMD:C_0603_1608Metric,TDK,C1608X7R1H104K080AA,ANALOG,no,MLCC; verify voltage derating
+C66,10uF low-ESR,Capacitor_SMD:C_0603_1608Metric,TDK,C1608X5R1A106M080AC,ANALOG,no,MLCC; verify voltage derating
+C67,10uF low-ESR,Capacitor_SMD:C_0603_1608Metric,TDK,C1608X5R1A106M080AC,ANALOG,no,MLCC; verify voltage derating
+C7,22uF 10V,Capacitor_SMD:C_0603_1608Metric,TDK,C1608 X7R series,POWER,no,
+C8,22uF 10V,Capacitor_SMD:C_0603_1608Metric,TDK,C1608 X7R series,POWER,no,
+C80,10nF 100V,Capacitor_SMD:C_1206_3216Metric,TDK,C3216X7R2A103K160AA,DIGITAL_INPUT,no,
+C81,10nF 100V,Capacitor_SMD:C_1206_3216Metric,TDK,C3216X7R2A103K160AA,DIGITAL_INPUT,no,
+C82,10nF 100V,Capacitor_SMD:C_1206_3216Metric,TDK,C3216X7R2A103K160AA,DIGITAL_INPUT,no,
+C83,10nF 100V,Capacitor_SMD:C_1206_3216Metric,TDK,C3216X7R2A103K160AA,DIGITAL_INPUT,no,
+C84,100nF,Capacitor_SMD:C_0603_1608Metric,TDK,C1608X7R1H104K080AA,DIGITAL_INPUT,no,MLCC; verify voltage derating
+C85,100nF,Capacitor_SMD:C_0603_1608Metric,TDK,C1608X7R1H104K080AA,DIGITAL_INPUT,no,MLCC; verify voltage derating
+C9,10nF,Capacitor_SMD:C_0603_1608Metric,TDK,C1608 X7R series,POWER,no,
+C90,100nF,Capacitor_SMD:C_0603_1608Metric,TDK,C1608X7R1H104K080AA,ISOLATED_BUSES,no,MLCC; verify voltage derating
+C91,2.2uF 10V,Capacitor_SMD:C_0805_2012Metric,TDK,C2012X7R1A225K125AC,ISOLATED_BUSES,no,MLCC; verify voltage derating
+C92,100nF,Capacitor_SMD:C_0603_1608Metric,TDK,C1608X7R1H104K080AA,ISOLATED_BUSES,no,MLCC; verify voltage derating
+C93,2.2uF 10V,Capacitor_SMD:C_0805_2012Metric,TDK,C2012X7R1A225K125AC,ISOLATED_BUSES,no,MLCC; verify voltage derating
+C94,100nF,Capacitor_SMD:C_0805_2012Metric,TDK,C1608X7R1H104K080AA,ISOLATED_BUSES,no,MLCC; verify voltage derating
+C95,2.2uF,Capacitor_SMD:C_0805_2012Metric,TDK,C2012X7R1A225K125AC,ISOLATED_BUSES,no,MLCC; verify voltage derating
+D1,SMBJ36A,Diode_SMD:D_SMB,Littelfuse,SMBJ36A,POWER,no,
+D10,SMAJ12A,Diode_SMD:D_SMA,Littelfuse,SMAJ12A,ANALOG,no,
+D11,SMAJ12A,Diode_SMD:D_SMA,Littelfuse,SMAJ12A,ANALOG,no,
+D12,SMAJ12A,Diode_SMD:D_SMA,Littelfuse,SMAJ12A,ANALOG,no,
+D13,SMAJ12A,Diode_SMD:D_SMA,Littelfuse,SMAJ12A,ANALOG,no,
+D14,SMAJ33A,Diode_SMD:D_SMA,Littelfuse,SMAJ33A,DIGITAL_INPUT,no,
+D15,SMAJ33A,Diode_SMD:D_SMA,Littelfuse,SMAJ33A,DIGITAL_INPUT,no,
+D16,SMAJ33A,Diode_SMD:D_SMA,Littelfuse,SMAJ33A,DIGITAL_INPUT,no,
+D17,SMAJ33A,Diode_SMD:D_SMA,Littelfuse,SMAJ33A,DIGITAL_INPUT,no,
+D18,SM712,Package_TO_SOT_SMD:SOT-23,Littelfuse,SM712-02HTG,ISOLATED_BUSES,no,
+D19,SM712,Package_TO_SOT_SMD:SOT-23,Littelfuse,SM712-02HTG,ISOLATED_BUSES,no,
+D2,SS56 60V/5A,Diode_SMD:D_SMB,Diodes Inc.,SS56-13-F,POWER,no,Series reverse-polarity protection
+D20,SM712,Package_TO_SOT_SMD:SOT-23,Littelfuse,SM712-02HTG,ISOLATED_BUSES,no,
+D3,RUN GREEN,LED_SMD:LED_0603_1608Metric,Wurth,0603 green LED,CONTROLLER,no,
+D4,FAULT RED,LED_SMD:LED_0603_1608Metric,Wurth,0603 red LED,CONTROLLER,no,
+F1,2A resettable,Fuse:Fuse_1812_4532Metric,Littelfuse,1812L200/33,POWER,no,
+FB1,600R@100MHz,Inductor_SMD:L_0603_1608Metric,Murata,BLM18AG601SN1D,CONTROLLER,no,
+FB2,600R@100MHz,Inductor_SMD:L_0603_1608Metric,Murata,BLM18AG601SN1D,NETWORK,no,
+FB3,600R@100MHz,Inductor_SMD:L_0603_1608Metric,Murata,BLM18AG601SN1D,ANALOG,no,
+J1,POWER 9–36V / RETURN / CHASSIS,"TerminalBlock_Phoenix:TerminalBlock_Phoenix_MKDS-1,5-3-5.08_1x03_P5.08mm_Horizontal",Phoenix Contact,1715035 equivalent,POWER,no,"Field power terminal, 5.08 mm pitch"
+J10,AI1 / AGND,"TerminalBlock_Phoenix:TerminalBlock_Phoenix_MKDS-1,5-2-5.08_1x02_P5.08mm_Horizontal",Phoenix Contact,"MKDS 1,5/2-5,08",ANALOG,no,
+J11,AI2 / AGND,"TerminalBlock_Phoenix:TerminalBlock_Phoenix_MKDS-1,5-2-5.08_1x02_P5.08mm_Horizontal",Phoenix Contact,"MKDS 1,5/2-5,08",ANALOG,no,
+J12,AI3 / AGND,"TerminalBlock_Phoenix:TerminalBlock_Phoenix_MKDS-1,5-2-5.08_1x02_P5.08mm_Horizontal",Phoenix Contact,"MKDS 1,5/2-5,08",ANALOG,no,
+J13,AI4 / AGND,"TerminalBlock_Phoenix:TerminalBlock_Phoenix_MKDS-1,5-2-5.08_1x02_P5.08mm_Horizontal",Phoenix Contact,"MKDS 1,5/2-5,08",ANALOG,no,
+J14,DI1 / DI2 / DI3 / DI4 / FIELD COM,"TerminalBlock_Phoenix:TerminalBlock_Phoenix_MKDS-1,5-5-5.08_1x05_P5.08mm_Horizontal",Phoenix Contact,"MKDS 1,5/5-5,08",DIGITAL_INPUT,no,
+J15,RS-485 A: A+ / B- / ISO GND,"TerminalBlock_Phoenix:TerminalBlock_Phoenix_MKDS-1,5-3-5.08_1x03_P5.08mm_Horizontal",Phoenix Contact,"MKDS 1,5/3-5,08",ISOLATED_BUSES,no,
+J16,RS-485 B: A+ / B- / ISO GND,"TerminalBlock_Phoenix:TerminalBlock_Phoenix_MKDS-1,5-3-5.08_1x03_P5.08mm_Horizontal",Phoenix Contact,"MKDS 1,5/3-5,08",ISOLATED_BUSES,no,
+J17,CAN-H / CAN-L / ISO GND,"TerminalBlock_Phoenix:TerminalBlock_Phoenix_MKDS-1,5-3-5.08_1x03_P5.08mm_Horizontal",Phoenix Contact,"MKDS 1,5/3-5,08",ISOLATED_BUSES,no,
+J2,ARM SWD 10-pin,Connector_PinHeader_1.27mm:PinHeader_2x05_P1.27mm_Vertical_SMD,Samtec,FTSH-105-01-L-DV-K,CONTROLLER,no,
+J3,MICROSD INDUSTRIAL,Connector_Card:microSD_HC_Molex_104031-0811,Molex,104031-0811,STORAGE_SERVICE,no,
+J4,USB-C SERVICE DEVICE,Connector_USB:USB_C_Receptacle_GCT_USB4105-xx-A_16P_TopMnt_Horizontal,GCT,USB4105-GF-A,STORAGE_SERVICE,no,
+J5,RJ45 MAGJACK 10/100,Connector_RJ:RJ45_Hanrun_HR911105A_Horizontal,HanRun,HR911105A,NETWORK,no,
+J6,SERVICE / EXPANSION,Connector_PinHeader_2.54mm:PinHeader_1x08_P2.54mm_Vertical,Würth Elektronik,61300811121,CONTROLLER,no,1x8 vertical 2.54 mm service header
+JP1,AI1 CURRENT MODE,Jumper:SolderJumper-2_P1.3mm_Open_Pad1.0x1.5mm,PCB feature,N/A,ANALOG,no,Close only for 4–20 mA mode
+JP2,AI2 CURRENT MODE,Jumper:SolderJumper-2_P1.3mm_Open_Pad1.0x1.5mm,PCB feature,N/A,ANALOG,no,Close only for 4–20 mA mode
+JP3,AI3 CURRENT MODE,Jumper:SolderJumper-2_P1.3mm_Open_Pad1.0x1.5mm,PCB feature,N/A,ANALOG,no,Close only for 4–20 mA mode
+JP4,AI4 CURRENT MODE,Jumper:SolderJumper-2_P1.3mm_Open_Pad1.0x1.5mm,PCB feature,N/A,ANALOG,no,Close only for 4–20 mA mode
+JP5,120R TERMINATION ENABLE,Jumper:SolderJumper-2_P1.3mm_Open_Pad1.0x1.5mm,PCB feature,N/A,ISOLATED_BUSES,no,Solder-selectable jumper
+JP6,120R TERMINATION ENABLE,Jumper:SolderJumper-2_P1.3mm_Open_Pad1.0x1.5mm,PCB feature,N/A,ISOLATED_BUSES,no,Solder-selectable jumper
+JP7,CAN 120R TERMINATION,Jumper:SolderJumper-2_P1.3mm_Open_Pad1.0x1.5mm,PCB feature,N/A,ISOLATED_BUSES,no,Solder-selectable jumper
+L1,10uH input EMI,Inductor_SMD:L_12x12mm_H6mm,Bourns,SRP1265A-100M,POWER,no,
+L2,10uH / 4.5A,Inductor_SMD:L_10.4x10.4_H4.8,Coilcraft,XAL1010-103,POWER,no,
+L3,2.2uH / 4A,Inductor_SMD:L_6.3x6.3_H3,Coilcraft,XFL6030-222,POWER,no,
+R1,40.2k 1%,Resistor_SMD:R_0603_1608Metric,Yageo,RC0603FR series,POWER,no,
+R10,10k,Resistor_SMD:R_0603_1608Metric,Yageo,RC0603FR-0710KL,CONTROLLER,no,
+R11,100k,Resistor_SMD:R_0603_1608Metric,Yageo,RC0603FR-07100KL,CONTROLLER,no,
+R12,1k,Resistor_SMD:R_0603_1608Metric,Yageo,RC0603FR-071KL,CONTROLLER,no,Thick-film resistor
+R13,1k,Resistor_SMD:R_0603_1608Metric,Yageo,RC0603FR-071KL,CONTROLLER,no,Thick-film resistor
+R14,330k 1%,Resistor_SMD:R_0603_1608Metric,Yageo,RC0603FR series,CONTROLLER,no,
+R15,33k 1%,Resistor_SMD:R_0603_1608Metric,Yageo,RC0603FR series,CONTROLLER,no,
+R16,100k 1%,Resistor_SMD:R_0603_1608Metric,Yageo,RC0603FR series,CONTROLLER,no,
+R17,200k 1%,Resistor_SMD:R_0603_1608Metric,Yageo,RC0603FR series,CONTROLLER,no,
+R18,10k 1%,Resistor_SMD:R_0603_1608Metric,Yageo,RC0603FR series,CONTROLLER,no,
+R19,100k 1%,Resistor_SMD:R_0603_1608Metric,Yageo,RC0603FR series,CONTROLLER,no,
+R2,10.0k 1%,Resistor_SMD:R_0603_1608Metric,Yageo,RC0603FR series,POWER,no,
+R20,4.7k,Resistor_SMD:R_0603_1608Metric,Yageo,RC0603FR series,STORAGE_SERVICE,no,
+R21,4.7k,Resistor_SMD:R_0603_1608Metric,Yageo,RC0603FR series,STORAGE_SERVICE,no,
+R22,10k,Resistor_SMD:R_0603_1608Metric,Yageo,RC0603FR-0710KL,STORAGE_SERVICE,no,Thick-film resistor
+R23,5.1k,Resistor_SMD:R_0603_1608Metric,Yageo,RC0603FR-075K1L,STORAGE_SERVICE,no,Thick-film resistor
+R24,5.1k,Resistor_SMD:R_0603_1608Metric,Yageo,RC0603FR-075K1L,STORAGE_SERVICE,no,Thick-film resistor
+R25,100k,Resistor_SMD:R_0603_1608Metric,Yageo,RC0603FR-07100KL,STORAGE_SERVICE,no,Thick-film resistor
+R26,33k,Resistor_SMD:R_0603_1608Metric,Yageo,RC0603FR-0733KL,STORAGE_SERVICE,no,Thick-film resistor
+R27,10k,Resistor_SMD:R_0603_1608Metric,Yageo,RC0603FR-0710KL,STORAGE_SERVICE,no,Thick-film resistor
+R28,10k,Resistor_SMD:R_0603_1608Metric,Yageo,RC0603FR-0710KL,STORAGE_SERVICE,no,Thick-film resistor
+R3,150k 1%,Resistor_SMD:R_0603_1608Metric,Yageo,RC0603FR series,POWER,no,
+R4,33k 1%,Resistor_SMD:R_0603_1608Metric,Yageo,RC0603FR series,POWER,no,
+R40,12.1k 1%,Resistor_SMD:R_0603_1608Metric,Yageo,RC0603FR-0712K1L,NETWORK,no,Thick-film resistor
+R41,49.9R 1%,Resistor_SMD:R_0603_1608Metric,Yageo,RC0603FR-0749R9L,NETWORK,no,Thick-film resistor
+R42,49.9R 1%,Resistor_SMD:R_0603_1608Metric,Yageo,RC0603FR-0749R9L,NETWORK,no,Thick-film resistor
+R43,49.9R 1%,Resistor_SMD:R_0603_1608Metric,Yageo,RC0603FR-0749R9L,NETWORK,no,Thick-film resistor
+R44,49.9R 1%,Resistor_SMD:R_0603_1608Metric,Yageo,RC0603FR-0749R9L,NETWORK,no,Thick-film resistor
+R45,10k,Resistor_SMD:R_0603_1608Metric,Yageo,RC0603FR-0710KL,NETWORK,no,Thick-film resistor
+R46,1k,Resistor_SMD:R_0603_1608Metric,Yageo,RC0603FR-071KL,NETWORK,no,Thick-film resistor
+R47,1k,Resistor_SMD:R_0603_1608Metric,Yageo,RC0603FR-071KL,NETWORK,no,Thick-film resistor
+R48,10k,Resistor_SMD:R_0603_1608Metric,Yageo,RC0603FR-0710KL,NETWORK,yes,Thick-film resistor
+R49,10k,Resistor_SMD:R_0603_1608Metric,Yageo,RC0603FR-0710KL,NETWORK,yes,Thick-film resistor
+R5,100k 1%,Resistor_SMD:R_0603_1608Metric,Yageo,RC0603FR series,POWER,no,
+R6,10k,Resistor_SMD:R_0603_1608Metric,Yageo,RC0603FR series,POWER,no,
+R60,249R 0.1% 25ppm,Resistor_SMD:R_0805_2012Metric,Vishay,TNPW0805249RBEEN,ANALOG,no,
+R61,1k 0.1%,Resistor_SMD:R_0603_1608Metric,Vishay,TNPW06031K00BEEA,ANALOG,no,
+R62,249R 0.1% 25ppm,Resistor_SMD:R_0805_2012Metric,Vishay,TNPW0805249RBEEN,ANALOG,no,
+R63,1k 0.1%,Resistor_SMD:R_0603_1608Metric,Vishay,TNPW06031K00BEEA,ANALOG,no,
+R64,249R 0.1% 25ppm,Resistor_SMD:R_0805_2012Metric,Vishay,TNPW0805249RBEEN,ANALOG,no,
+R65,1k 0.1%,Resistor_SMD:R_0603_1608Metric,Vishay,TNPW06031K00BEEA,ANALOG,no,
+R66,249R 0.1% 25ppm,Resistor_SMD:R_0805_2012Metric,Vishay,TNPW0805249RBEEN,ANALOG,no,
+R67,1k 0.1%,Resistor_SMD:R_0603_1608Metric,Vishay,TNPW06031K00BEEA,ANALOG,no,
+R68,0R star link,Resistor_SMD:R_0805_2012Metric,Yageo,RC0805JR-070RL,ANALOG,no,Single controlled analog/digital ground link
+R80,1.00k 1% RTHR,Resistor_SMD:R_1206_3216Metric,Yageo,RC1206FR-071KL,DIGITAL_INPUT,no,
+R81,562R 1% RSENSE,Resistor_SMD:R_1206_3216Metric,Yageo,RC1206FR-07562RL,DIGITAL_INPUT,no,
+R82,1.00k 1% RTHR,Resistor_SMD:R_1206_3216Metric,Yageo,RC1206FR-071KL,DIGITAL_INPUT,no,
+R83,562R 1% RSENSE,Resistor_SMD:R_1206_3216Metric,Yageo,RC1206FR-07562RL,DIGITAL_INPUT,no,
+R84,1.00k 1% RTHR,Resistor_SMD:R_1206_3216Metric,Yageo,RC1206FR-071KL,DIGITAL_INPUT,no,
+R85,562R 1% RSENSE,Resistor_SMD:R_1206_3216Metric,Yageo,RC1206FR-07562RL,DIGITAL_INPUT,no,
+R86,1.00k 1% RTHR,Resistor_SMD:R_1206_3216Metric,Yageo,RC1206FR-071KL,DIGITAL_INPUT,no,
+R87,562R 1% RSENSE,Resistor_SMD:R_1206_3216Metric,Yageo,RC1206FR-07562RL,DIGITAL_INPUT,no,
+R90,120R 1%,Resistor_SMD:R_1206_3216Metric,Yageo,RC1206FR-07120RL,ISOLATED_BUSES,no,Thick-film resistor
+R91,10k,Resistor_SMD:R_0603_1608Metric,Yageo,RC0603FR-0710KL,ISOLATED_BUSES,no,Thick-film resistor
+R92,120R 1%,Resistor_SMD:R_1206_3216Metric,Yageo,RC1206FR-07120RL,ISOLATED_BUSES,no,Thick-film resistor
+R93,10k,Resistor_SMD:R_0603_1608Metric,Yageo,RC0603FR-0710KL,ISOLATED_BUSES,no,Thick-film resistor
+R94,120R 1%,Resistor_SMD:R_1206_3216Metric,Yageo,RC1206FR-07120RL,ISOLATED_BUSES,no,Thick-film resistor
+R95,10k,Resistor_SMD:R_0603_1608Metric,Yageo,RC0603FR-0710KL,ISOLATED_BUSES,no,Thick-film resistor
+SW1,RESET,Button_Switch_SMD:SW_SPST_TL3342,E-Switch,TL3342F160QG,CONTROLLER,no,
+SW2,BOOT,Button_Switch_SMD:SW_SPST_TL3342,E-Switch,TL3342F160QG,CONTROLLER,no,
+U1,LM76002RNPR,Package_DFN_QFN:Texas_RNP0030B_WQFN-30-1EP_4x6mm_P0.5mm_EP1.8x4.5mm_ThermalVias,Texas Instruments,LM76002RNPR,POWER,no,"60 V, 2.5 A synchronous buck regulator"
+U10,ISO1212DBQ,Package_SO:SSOP-16_3.9x4.9mm_P0.635mm,Texas Instruments,ISO1212DBQ,DIGITAL_INPUT,no,
+U11,ISO1212DBQ,Package_SO:SSOP-16_3.9x4.9mm_P0.635mm,Texas Instruments,ISO1212DBQ,DIGITAL_INPUT,no,
+U12,ISOW1412DFMR,Package_SO:SOIC-20W_7.5x12.8mm_P1.27mm,Texas Instruments,ISOW1412DFMR,ISOLATED_BUSES,no,
+U13,ISOW1412DFMR,Package_SO:SOIC-20W_7.5x12.8mm_P1.27mm,Texas Instruments,ISOW1412DFMR,ISOLATED_BUSES,no,
+U14,ISOW1044DFMR,Package_SO:SOIC-20W_7.5x12.8mm_P1.27mm,Texas Instruments,ISOW1044DFMR,ISOLATED_BUSES,no,Isolated CAN-FD transceiver with integrated power
+U2,TPS62132RGTR,Package_DFN_QFN:VQFN-16-1EP_3x3mm_P0.5mm_EP1.68x1.68mm_ThermalVias,Texas Instruments,TPS62132RGTR,POWER,no,3 A fixed 3.3 V synchronous buck regulator
+U3,STM32H563ZIT6,Package_QFP:LQFP-144_20x20mm_P0.5mm,STMicroelectronics,STM32H563ZIT6,CONTROLLER,no,"Cortex-M33 MCU, 2 MB flash, 640 KB RAM, LQFP-144"
+U4,RV-3028-C7,Package_SON:MicroCrystal_C7_SON-8_1.5x3.2mm_P0.9mm,Micro Crystal,RV-3028-C7,STORAGE_SERVICE,no,
+U5,W25Q128JVSIQ,Package_SO:SOIC-8_5.3x5.3mm_P1.27mm,Winbond,W25Q128JVSIQ,STORAGE_SERVICE,no,
+U6,USBLC6-2SC6,Package_TO_SOT_SMD:SOT-23-6,STMicroelectronics,USBLC6-2SC6,STORAGE_SERVICE,no,
+U7,LAN8742Ai-CZ-TR,Package_DFN_QFN:VQFN-24-1EP_4x4mm_P0.5mm_EP2.5x2.5mm_ThermalVias,Microchip,LAN8742Ai-CZ-TR,NETWORK,no,
+U8,ESP32-C3-WROOM-02,RF_Module:ESP32-C3-WROOM-02,Espressif,ESP32-C3-WROOM-02-N4,NETWORK,yes,Optional Wi-Fi coprocessor; STM32 remains authority
+U9,ADS8684IDBT,Package_SO:TSSOP-38_4.4x9.7mm_P0.5mm,Texas Instruments,ADS8684IDBT,ANALOG,no,4-channel 16-bit 500 kSPS bipolar-input SAR ADC
+Y1,25MHz 10pF,Crystal:Crystal_SMD_3215-2Pin_3.2x1.5mm,Abracon,industrial crystal equivalent,CONTROLLER,no,
+Y2,32.768kHz 12.5pF,Crystal:Crystal_SMD_3215-2Pin_3.2x1.5mm,Abracon,industrial crystal equivalent,CONTROLLER,no,
+Y3,25MHz 10pF,Crystal:Crystal_SMD_3215-2Pin_3.2x1.5mm,Abracon,ABM8-25.000MHZ series,NETWORK,no,

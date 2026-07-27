@@ -1,0 +1,247 @@
+** Drc report for edge18-main-rev-a.kicad_pcb **
+** Created on 2026-07-27T05:22:54+0000 **
+
+** Found 43 DRC violations **
+[hole_to_hole]: Drilled hole too close to other hole (board setup constraints min 0.2495 mm; actual 0.2252 mm)
+    Rule: board setup constraints; warning
+    @(103.9805 mm, 61.2500 mm): Via [GND] on F.Cu - B.Cu
+    @(103.4077 mm, 61.5005 mm): Via [GND] on F.Cu - B.Cu
+[hole_to_hole]: Drilled hole too close to other hole (board setup constraints min 0.2495 mm; actual 0.0928 mm)
+    Rule: board setup constraints; warning
+    @(111.1750 mm, 85.9500 mm): Via [3V3] on F.Cu - B.Cu
+    @(111.6956 mm, 85.6665 mm): Via [3V3] on F.Cu - B.Cu
+[hole_to_hole]: Drilled hole too close to other hole (board setup constraints min 0.2495 mm; actual 0.0000 mm)
+    Rule: board setup constraints; warning
+    @(78.8375 mm, 58.7500 mm): Via [NRST] on F.Cu - B.Cu
+    @(78.8250 mm, 58.7500 mm): Via [NRST] on F.Cu - B.Cu
+[hole_to_hole]: Drilled hole too close to other hole (board setup constraints min 0.2495 mm; actual 0.1941 mm)
+    Rule: board setup constraints; warning
+    @(61.1625 mm, 71.0000 mm): Via [ADC_SCK] on F.Cu - B.Cu
+    @(60.5445 mm, 70.9627 mm): Via [ADC_SCK] on F.Cu - B.Cu
+[copper_edge_clearance]: Board edge clearance violation (board setup constraints edge clearance 0.5000 mm; actual 0.1994 mm)
+    Rule: board setup constraints edge; error
+    @(148.4000 mm, 85.5000 mm): Rectangle on Edge.Cuts
+    @(147.3384 mm, 85.7139 mm): Track [5V] on F.Cu, length 3.3462 mm
+[copper_edge_clearance]: Board edge clearance violation (board setup constraints edge clearance 0.5000 mm; actual 0.2155 mm)
+    Rule: board setup constraints edge; error
+    @(126.4000 mm, 85.5000 mm): Rectangle on Edge.Cuts
+    @(144.6950 mm, 95.1155 mm): Track [5V] on In2.Cu, length 20.3231 mm
+[copper_edge_clearance]: Board edge clearance violation (board setup constraints edge clearance 0.5000 mm; actual 0.2973 mm)
+    Rule: board setup constraints edge; error
+    @(126.4000 mm, 85.5000 mm): Rectangle on Edge.Cuts
+    @(128.1473 mm, 89.7339 mm): Track [RS485A_N] on F.Cu, length 3.4094 mm
+[copper_edge_clearance]: Board edge clearance violation (board setup constraints edge clearance 0.5000 mm; actual 0.2973 mm)
+    Rule: board setup constraints edge; error
+    @(126.4000 mm, 85.5000 mm): Rectangle on Edge.Cuts
+    @(128.1473 mm, 93.1433 mm): Track [RS485A_N] on F.Cu, length 0.4458 mm
+[copper_edge_clearance]: Board edge clearance violation (board setup constraints edge clearance 0.5000 mm; actual 0.2973 mm)
+    Rule: board setup constraints edge; error
+    @(126.4000 mm, 85.5000 mm): Rectangle on Edge.Cuts
+    @(131.0562 mm, 86.8250 mm): Track [RS485A_N] on F.Cu, length 4.1138 mm
+[copper_edge_clearance]: Board edge clearance violation (board setup constraints edge clearance 0.5000 mm; actual 0.2976 mm)
+    Rule: board setup constraints edge; error
+    @(148.4000 mm, 85.5000 mm): Rectangle on Edge.Cuts
+    @(153.0563 mm, 86.8250 mm): Track [RS485B_N] on F.Cu, length 4.1135 mm
+[copper_edge_clearance]: Board edge clearance violation (board setup constraints edge clearance 0.5000 mm; actual 0.2976 mm)
+    Rule: board setup constraints edge; error
+    @(148.4000 mm, 85.5000 mm): Rectangle on Edge.Cuts
+    @(150.1476 mm, 89.7337 mm): Track [RS485B_N] on F.Cu, length 11.9514 mm
+[clearance]: Clearance violation (netclass 'HIGHSPEED' clearance 0.1800 mm; actual 0.1679 mm)
+    Rule: netclass 'HIGHSPEED'; error
+    @(80.3375 mm, 61.2500 mm): Track [NRST] on F.Cu, length 1.5000 mm
+    @(79.0657 mm, 61.8929 mm): Via [ETH_MDC] on F.Cu - B.Cu
+[track_dangling]: Track has unconnected end
+    Local override; warning
+    @(54.2250 mm, 21.0000 mm): Track [VCC_5V] on F.Cu, length 0.9125 mm
+[track_dangling]: Track has unconnected end
+    Local override; warning
+    @(53.2250 mm, 22.0000 mm): Track [VCC_5V] on In1.Cu, length 0.5000 mm
+[track_dangling]: Track has unconnected end
+    Local override; warning
+    @(87.7250 mm, 17.5000 mm): Track [5V] on F.Cu, length 0.5000 mm
+[track_dangling]: Track has unconnected end
+    Local override; warning
+    @(84.7250 mm, 18.5000 mm): Track [5V] on F.Cu, length 1.4142 mm
+[via_dangling]: Via is not connected or connected on only one layer
+    Local override; warning
+    @(52.8375 mm, 20.5000 mm): Via [5V] on F.Cu - B.Cu
+[track_dangling]: Track has unconnected end
+    Local override; warning
+    @(92.7500 mm, 46.0011 mm): Track [3V3] on F.Cu, length 2.1213 mm
+[track_dangling]: Track has unconnected end
+    Local override; warning
+    @(93.7500 mm, 46.5011 mm): Track [3V3] on F.Cu, length 0.5000 mm
+[track_dangling]: Track has unconnected end
+    Local override; warning
+    @(144.7500 mm, 31.9375 mm): Track [3V3] on F.Cu, length 1.0000 mm
+[track_dangling]: Track has unconnected end
+    Local override; warning
+    @(86.2500 mm, 71.1625 mm): Track [3V3] on F.Cu, length 0.7071 mm
+[via_dangling]: Via is not connected or connected on only one layer
+    Local override; warning
+    @(87.2500 mm, 16.7375 mm): Via [3V3] on F.Cu - B.Cu
+[via_dangling]: Via is not connected or connected on only one layer
+    Local override; warning
+    @(146.7500 mm, 34.9375 mm): Via [3V3] on F.Cu - B.Cu
+[track_dangling]: Track has unconnected end
+    Local override; warning
+    @(77.8375 mm, 87.7500 mm): Track [DI1] on F.Cu, length 2.0000 mm
+[track_dangling]: Track has unconnected end
+    Local override; warning
+    @(80.3375 mm, 50.7500 mm): Track [DI1] on F.Cu, length 1.5000 mm
+[track_dangling]: Track has unconnected end
+    Local override; warning
+    @(77.8375 mm, 51.7500 mm): Track [DI1] on F.Cu, length 0.5000 mm
+[track_dangling]: Track has unconnected end
+    Local override; warning
+    @(77.8375 mm, 81.7500 mm): Track [DI1] on In1.Cu, length 6.0000 mm
+[via_dangling]: Via is not connected or connected on only one layer
+    Local override; warning
+    @(77.0375 mm, 50.7500 mm): Via [DI2] on F.Cu - B.Cu
+[via_dangling]: Via is not connected or connected on only one layer
+    Local override; warning
+    @(78.6000 mm, 88.8175 mm): Via [DI2] on F.Cu - B.Cu
+[track_dangling]: Track has unconnected end
+    Local override; warning
+    @(80.3375 mm, 61.2500 mm): Track [NRST] on F.Cu, length 1.5000 mm
+[track_dangling]: Track has unconnected end
+    Local override; warning
+    @(54.6949 mm, 80.0000 mm): Track [AGND] on F.Cu, length 0.7071 mm
+[via_dangling]: Via is not connected or connected on only one layer
+    Local override; warning
+    @(56.4687 mm, 71.4120 mm): Via [ADC_CS] on F.Cu - B.Cu
+[via_dangling]: Via is not connected or connected on only one layer
+    Local override; warning
+    @(59.6625 mm, 69.0000 mm): Via [ADC_CS] on F.Cu - B.Cu
+[via_dangling]: Via is not connected or connected on only one layer
+    Local override; warning
+    @(84.2500 mm, 70.4625 mm): Via [ADC_CS] on F.Cu - B.Cu
+[via_dangling]: Via is not connected or connected on only one layer
+    Local override; warning
+    @(145.2500 mm, 34.2375 mm): Via [ETH_CRS_DV] on F.Cu - B.Cu
+[via_dangling]: Via is not connected or connected on only one layer
+    Local override; warning
+    @(85.2500 mm, 72.9625 mm): Via [ETH_CRS_DV] on F.Cu - B.Cu
+[track_dangling]: Track has unconnected end
+    Local override; warning
+    @(120.8500 mm, 87.3650 mm): Track [RS485A_DIR] on F.Cu, length 0.5000 mm
+[track_dangling]: Track has unconnected end
+    Local override; warning
+    @(121.8500 mm, 88.8650 mm): Track [RS485A_DIR] on F.Cu, length 1.0000 mm
+[via_dangling]: Via is not connected or connected on only one layer
+    Local override; warning
+    @(120.5500 mm, 85.5550 mm): Via [RS485A_TX] on F.Cu - B.Cu
+[via_dangling]: Via is not connected or connected on only one layer
+    Local override; warning
+    @(120.5500 mm, 88.0950 mm): Via [RS485A_RX] on F.Cu - B.Cu
+[via_dangling]: Via is not connected or connected on only one layer
+    Local override; warning
+    @(143.0625 mm, 28.7500 mm): Micro Via [3V3_ETH] on F.Cu - In1.Cu
+[track_dangling]: Track has unconnected end
+    Local override; warning
+    @(145.2500 mm, 28.0625 mm): Track [ETH_TX_P] on F.Cu, length 1.6223 mm
+[via_dangling]: Via is not connected or connected on only one layer
+    Local override; warning
+    @(145.6022 mm, 24.5046 mm): Via [ETH_TX_P] on F.Cu - B.Cu
+
+** Found 24 unconnected pads **
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(119.7750 mm, 89.5000 mm): Track [GND] on F.Cu, length 0.3430 mm
+    @(119.7750 mm, 87.0000 mm): Track [GND] on F.Cu, length 0.2471 mm
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(124.8000 mm, 4.3200 mm): Pad A1 [GND] of J4 on F.Cu
+    @(131.2000 mm, 4.3200 mm): Pad A12 [GND] of J4 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(54.2250 mm, 21.0000 mm): Track [VCC_5V] on F.Cu, length 0.9125 mm
+    @(53.2250 mm, 22.0000 mm): Track [VCC_5V] on In1.Cu, length 0.5000 mm
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(84.7250 mm, 18.5000 mm): Track [5V] on F.Cu, length 1.4142 mm
+    @(87.7250 mm, 17.5000 mm): Track [5V] on F.Cu, length 0.5000 mm
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(55.1375 mm, 21.5000 mm): Track [5V] on F.Cu, length 1.3000 mm
+    @(63.5257 mm, 30.6649 mm): Track [5V] on F.Cu, length 0.6858 mm
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(92.7500 mm, 46.0011 mm): Track [3V3] on F.Cu, length 2.1213 mm
+    @(93.7500 mm, 46.5011 mm): Track [3V3] on F.Cu, length 0.5000 mm
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(146.7500 mm, 34.9375 mm): Track [3V3] on In2.Cu, length 1.4142 mm
+    @(144.7500 mm, 31.9375 mm): Track [3V3] on F.Cu, length 1.0000 mm
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(86.0446 mm, 21.6679 mm): Track [3V3] on F.Cu, length 0.2905 mm
+    @(87.2500 mm, 18.5375 mm): Track [3V3] on F.Cu, length 1.3000 mm
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(77.8375 mm, 87.7500 mm): Track [DI1] on F.Cu, length 2.0000 mm
+    @(77.8375 mm, 81.7500 mm): Track [DI1] on In1.Cu, length 6.0000 mm
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(77.8375 mm, 51.7500 mm): Track [DI1] on F.Cu, length 0.5000 mm
+    @(80.3375 mm, 50.7500 mm): Track [DI1] on F.Cu, length 1.5000 mm
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(80.3375 mm, 51.2500 mm): Track [DI2] on F.Cu, length 1.3000 mm
+    @(80.4000 mm, 88.3175 mm): Track [DI2] on F.Cu, length 1.3000 mm
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(62.8781 mm, 51.6531 mm): Track [HSE_IN] on F.Cu, length 3.3190 mm
+    @(80.3375 mm, 60.2500 mm): Pad 23 [HSE_IN] of U3 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(78.8375 mm, 58.7500 mm): Via [NRST] on F.Cu - B.Cu
+    @(80.3375 mm, 61.2500 mm): Track [NRST] on F.Cu, length 1.5000 mm
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(56.8261 mm, 71.7694 mm): Track [ADC_CS] on In2.Cu, length 0.5054 mm
+    @(57.8625 mm, 71.5000 mm): Pad 38 [ADC_CS] of U9 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(83.7500 mm, 68.6625 mm): Pad 40 [ADC_CS] of U3 on F.Cu
+    @(59.1625 mm, 71.5000 mm): Track [ADC_CS] on F.Cu, length 2.5495 mm
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(57.8625 mm, 72.5000 mm): Pad 36 [ADC_MISO] of U9 on F.Cu
+    @(84.7500 mm, 69.5133 mm): Track [ADC_MISO] on F.Cu, length 0.8508 mm
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(85.2500 mm, 68.6625 mm): Pad 43 [ETH_CRS_DV] of U3 on F.Cu
+    @(145.2500 mm, 34.2375 mm): Via [ETH_CRS_DV] on F.Cu - B.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(120.8500 mm, 87.3650 mm): Track [RS485A_DIR] on F.Cu, length 0.5000 mm
+    @(121.8500 mm, 88.8650 mm): Track [RS485A_DIR] on F.Cu, length 1.0000 mm
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(94.7500 mm, 47.3375 mm): Pad 119 [RS485A_TX] of U3 on F.Cu
+    @(121.0500 mm, 85.5550 mm): Track [RS485A_TX] on F.Cu, length 0.5000 mm
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(93.2500 mm, 47.3375 mm): Pad 122 [RS485A_RX] of U3 on F.Cu
+    @(121.0500 mm, 88.0950 mm): Track [RS485A_RX] on F.Cu, length 0.5000 mm
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(156.1750 mm, 34.0000 mm): Pad 1 [ETH_LED2] of R47 on F.Cu
+    @(143.0625 mm, 29.2500 mm): Track [ETH_LED2] on F.Cu, length 0.4992 mm
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(155.3650 mm, 13.4600 mm): Track [ETH_TX_N] on F.Cu, length 10.6632 mm
+    @(145.7500 mm, 28.0625 mm): Pad 20 [ETH_TX_N] of U7 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(145.6022 mm, 24.5046 mm): Track [ETH_TX_P] on In1.Cu, length 2.5893 mm
+    @(145.2500 mm, 28.0625 mm): Track [ETH_TX_P] on F.Cu, length 1.6223 mm
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(40.8250 mm, 88.0000 mm): Track [AI2_ADC] on F.Cu, length 2.4000 mm
+    @(52.1375 mm, 80.0000 mm): Pad 18 [AI2_ADC] of U9 on F.Cu
+
+** Found 0 Footprint errors **
+
+** End of Report **

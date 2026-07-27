@@ -28,3 +28,10 @@ jobs:
           python3 tools/validate_schemas.py
       - name: Check documentation links
         run: python3 tools/check_doc_links.py
+      - name: Validate frozen engineering review
+        run: python3 tools/validate_review.py
+      - name: Validate manufacturing release when present
+        run: |
+          if test -d release/edge18-rev-a; then
+            python3 tools/validate_release.py
+          fi

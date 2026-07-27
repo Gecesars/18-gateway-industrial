@@ -1,23 +1,27 @@
 # Interfaces e dados EDGE-18
 
-## 1. Conectores previstos
+## 1. Conectores da Rev. A
 
 | ID | Interface | Sinais | Domínio |
 |---|---|---|---|
 | J1 | alimentação | VIN+, VIN−, CHASSIS | 9–36 Vcc |
-| J2 | RS-485 A | A, B, GND_485A, SHIELD | isolado |
-| J3 | RS-485 B | A, B, GND_485B, SHIELD | isolado |
-| J4 | analógicas 1–2 | AI1, AI2, AGND_FIELD | campo comum |
-| J5 | analógicas 3–4 | AI3, AI4, AGND_FIELD | campo comum |
-| J6 | digitais 1–2 | DI1, DI2, FGND_DI | campo isolado |
-| J7 | digitais 3–4 | DI3, DI4, FGND_DI | campo isolado |
-| J8 | CAN | CANH, CANL, GND_CAN, SHIELD | isolado, fase 2 |
-| J9 | Ethernet | RJ45 blindado | magneticamente isolado |
-| J10 | USB serviço | USB-C 2.0 FS | lógica/serviço |
-| J11 | SWD | SWDIO, SWCLK, NRST, 3V3, GND | produção |
+| J2 | SWD ARM 10 pinos | SWDIO, SWCLK, SWO, NRST, 3V3, GND | produção |
+| J3 | microSD | SDMMC 4 bits, detect, 3V3, GND, shield | armazenamento |
+| J4 | USB-C serviço | USB 2.0 FS device, CC1/CC2, VBUS, GND, shield | lógica/serviço |
+| J5 | Ethernet | RJ45 blindado com magnetics e LEDs | magneticamente isolado |
+| J6 | serviço/expansão | 3V3, GND, I2C, UART, GPIO, NRST | lógica |
+| J10 | analógica 1 | AI1_FIELD, AGND | campo comum |
+| J11 | analógica 2 | AI2_FIELD, AGND | campo comum |
+| J12 | analógica 3 | AI3_FIELD, AGND | campo comum |
+| J13 | analógica 4 | AI4_FIELD, AGND | campo comum |
+| J14 | digitais 1–4 | DI1_FIELD…DI4_FIELD, DI_FIELD_GND | campo isolado |
+| J15 | RS-485 A | A+, B−, RS485A_GND | isolado |
+| J16 | RS-485 B | A+, B−, RS485B_GND | isolado |
+| J17 | CAN-FD | CAN-H, CAN-L, CAN_GND | isolado, reservado |
 
-A numeração é preliminar até o esquemático. Não montar cabo a partir desta
-tabela.
+Essa numeração corresponde ao esquemático Rev. A. Ela ainda não autoriza a
+montagem de chicote: pinout, chaveamento e polaridade devem ser confirmados
+contra a revisão que vier a ser liberada para fabricação.
 
 ## 2. Configuração
 

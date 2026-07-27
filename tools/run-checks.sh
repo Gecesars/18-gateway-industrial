@@ -15,7 +15,13 @@ cmake -S "$project_root" -B "$build_root" -DCMAKE_BUILD_TYPE=Debug
 cmake --build "$build_root"
 ctest --test-dir "$build_root" --output-on-failure
 
-if test -f "$project_root/mechanical/native/edge18-p0-assembly.FCStd"; then
+python3 "$project_root/tools/validate_review.py"
+
+if test -d "$project_root/release/edge18-rev-a"; then
+    python3 "$project_root/tools/validate_release.py"
+fi
+
+if test -f "$project_root/mechanical/native/edge18-rev-a-assembly.FCStd"; then
     validator="$project_root/mechanical/source/validate_edge18_enclosure.py"
     validator_output=$(
         "$project_root/tools/freecadcmd.sh" \

@@ -13,8 +13,16 @@
 11. [Controle documental](10-controle-documental.md)
 12. [Reutilização pelos projetos filhos](11-reutilizacao.md)
 13. [Fontes primárias e seleção](12-fontes-primarias.md)
-14. [Orçamento de pinos e periféricos](13-pinout-preliminar.md)
+14. [Pinout STM32H563 Rev. A](13-pinout-stm32h563-rev-a.md)
 15. [Modelo de ameaças](14-modelo-de-ameacas.md)
+16. [Cálculos elétricos](15-calculos-eletricos.md)
+17. [BOM e montagem](16-bom-e-montagem.md)
+18. [Estado congelado da PCB Rev. A](17-estado-da-pcb-rev-a.md)
+
+Relatórios gerados:
+
+- [ERC Rev. A](reports/edge18-main-rev-a-erc.rpt);
+- [DRC Rev. A](reports/edge18-main-rev-a-drc.rpt).
 
 O estado vivo do projeto fica em [`../project-management/`](../project-management/).
 

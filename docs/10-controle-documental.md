@@ -4,7 +4,8 @@
 
 - Projeto: 18 — Gateway Industrial Modbus/CAN Universal
 - Baseline inicial: 2026-07-26
-- Estado: concepção documentada
+- Baseline Rev. A congelada: 2026-07-27
+- Estado: projeto detalhado para revisão digital; não liberado para fabricação
 
 ## Documentos controlados
 

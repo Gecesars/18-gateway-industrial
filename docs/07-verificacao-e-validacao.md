@@ -18,6 +18,9 @@ ensaio.
 | VT-CORE-06 | CRC Modbus | vetor conhecido `0xCDC5` | passou |
 | VT-CFG-01 | schemas JSON | Draft 2020-12 válido | passou no host |
 | VT-CFG-02 | exemplos | válidos e invariantes coerentes | passou no host |
+| VT-EDA-01 | ERC KiCad Rev. A | 0 erros e 0 avisos | passou |
+| VT-EDA-02 | DRC KiCad Rev. A | 0 violações e 0 conexões abertas | falhou: 43/24 |
+| VT-EDA-03 | largura mínima presente | nenhum segmento abaixo de 0,25 mm | passou |
 | VT-MEC-01 | modelo dimensional FreeCAD | gabinete 210 × 150 × 65 mm, PCB 180 × 120 mm e objetos esperados | passou |
 | VT-PWR-01 | entrada 9–36 V | rails dentro da tolerância | pendente de hardware |
 | VT-PWR-02 | inversão e brownout | sem dano/configuração parcial | pendente |
@@ -78,3 +81,7 @@ Cada relatório contém:
 - dados brutos;
 - resultado, anomalias e responsável;
 - impacto sobre riscos e próximos gates.
+
+O resultado de `VT-EDA-02` está preservado integralmente em
+[`reports/edge18-main-rev-a-drc.rpt`](reports/edge18-main-rev-a-drc.rpt). A
+falha é deliberadamente visível e bloqueia a fabricação.

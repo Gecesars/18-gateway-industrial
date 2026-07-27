@@ -15,7 +15,7 @@ dispensa pinout completo, errata e disponibilidade.
 ## Ethernet e Wi-Fi
 
 - [LAN8742A — datasheet Microchip](https://ww1.microchip.com/downloads/en/DeviceDoc/8742a.pdf)
-- [ESP32-C3-MINI-1 — datasheet Espressif](https://www.espressif.com/documentation/esp32-c3-mini-1_datasheet_en.pdf)
+- [ESP32-C3-WROOM-02 — datasheet Espressif](https://www.espressif.com/sites/default/files/documentation/esp32-c3-wroom-02_datasheet_en.pdf)
 
 O LAN8742A fornece o PHY RMII. O ESP32-C3 é coprocessador opcional; o STM32
 continua autoridade e suporta funcionamento sem rádio.
@@ -33,12 +33,13 @@ Proteção interna não substitui TVS, filtro, resistor e análise de surto da p
 
 - [ISO1212 — entradas digitais TI](https://www.ti.com/product/ISO1212)
 - [ISOW1412 — RS-485 com potência isolada TI](https://www.ti.com/product/ISOW1412)
-- [ISO1410 — RS-485 isolada TI](https://www.ti.com/product/ISO1410)
-- [ISO1042 — CAN-FD isolado TI](https://www.ti.com/product/ISO1042)
+- [ISOW1412 — datasheet](https://www.ti.com/lit/ds/symlink/isow1412.pdf)
+- [ISOW1044 — CAN-FD com potência isolada TI](https://www.ti.com/product/ISOW1044)
 
 O ISO1212 atende entradas industriais de 24–60 V conforme a configuração de
-resistores. ISOW1412 simplifica o P0 integrando potência isolada; ISO1410 mais
-DC/DC permanece alternativa se ruído, custo ou estoque exigirem.
+resistores. ISOW1412 e ISOW1044 integram a potência das três interfaces de
+barramento isoladas. Uma solução com transceptor e DC/DC separados permanece
+alternativa se ruído, custo ou estoque exigirem.
 
 ## Alimentação
 

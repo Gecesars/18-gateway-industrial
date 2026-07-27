@@ -1,4 +1,4 @@
-# Hardware EDGE-18 P0
+# Hardware EDGE-18 Rev. A
 
 ## 1. Componentes arquiteturais
 
@@ -6,19 +6,20 @@
 |---|---|---|---|
 | MCU | STM32H563ZIT6, LQFP-144 | autoridade, Ethernet MAC, FDCAN, segurança | selecionado para P0 |
 | PHY | LAN8742Ai | Ethernet 10/100 RMII | selecionado para P0 |
-| Wi-Fi | ESP32-C3-MINI-1 | enlace opcional/coprocessador | selecionado, DNP permitido |
+| Wi-Fi | ESP32-C3-WROOM-02 | enlace opcional/coprocessador | footprint oficial, DNP por padrão |
 | ADC | ADS8684IDBT | 4 canais, 16 bits, faixas até ±10,24 V | selecionado para P0 |
 | DI | 2 × ISO1212DBQ | quatro entradas industriais isoladas | selecionado para P0 |
 | RS-485 | 2 × ISOW1412 | transceptor e potência isolada | selecionado para P0 |
-| CAN | ISO1042 + DC/DC isolado | CAN/CAN-FD para fase 2 | reservado no P0 |
+| CAN | ISOW1044DFMR | CAN/CAN-FD com potência isolada | montado; firmware desabilitado no MVP |
 | Buck principal | LM76002 | 9–36 V para 5 V, margem até 60 V no CI | selecionado para cálculo |
-| 3,3 V | conversor de 2 A ou mais | lógica, PHY e Wi-Fi | seleção antes do esquema final |
-| Armazenamento | microSD industrial + flash OctoSPI | fila e atualização | interface selecionada |
-| Serviço | USB-C USB 2.0 FS + SWD | console, recuperação e produção | selecionado |
+| 3,3 V | TPS62132RGTR, 3 A | lógica, PHY e Wi-Fi | selecionado |
+| Armazenamento | microSD + W25Q128JVSIQ | fila e atualização | selecionado |
+| Serviço | USB-C USB 2.0 FS + SWD 10 pinos | console, recuperação e produção | selecionado |
 
 Nenhum componente está qualificado apenas por aparecer nesta tabela. Footprint,
 estoque, lifecycle, térmica, EMC e substitutos precisam ser verificados antes
-do gate de fabricação.
+do gate de fabricação. A BOM de fonte possui 181 itens montáveis, campos de
+fabricante/MPN preenchidos e quatro itens DNP.
 
 ## 2. Placa e mecânica
 
@@ -28,16 +29,15 @@ do gate de fabricação.
 - conectores de campo plugáveis, passo mínimo 5,08 mm;
 - terminais de campo em uma borda, Ethernet/USB na borda oposta;
 - barreiras de isolação sem cobre em todas as camadas;
-- furos de montagem metálicos ligados ao chassi conforme análise EMC;
+- quatro furos de montagem M3 sem cobre;
 - gabinete-alvo: alumínio 210 × 150 × 65 mm, suporte para trilho DIN;
 - antena do ESP32 na borda, com keep-out em cobre e afastamento do gabinete, ou
-  variante MINI-1U com antena externa.
+  variante externa futura se o gabinete metálico exigir.
 
-O conjunto dimensional P0 está em
-`mechanical/native/edge18-p0-assembly.FCStd`, com exportações STEP da base,
-tampa e conjunto. Ele verifica dimensões, seis fixações M3, aberturas-envelope
-e separação inicial dos blocos. Conectores, tolerâncias, vedação e desenho de
-fabricação ainda dependem do KiCad G1/G2.
+O conjunto digital está em
+`mechanical/native/edge18-rev-a-assembly.FCStd`, com exportações STEP da base,
+tampa e conjunto. A revisão mecânica usa quatro fixações M3 e importa o
+STEP real da PCB para conferência das aberturas.
 
 ## 3. Alimentação
 
@@ -62,20 +62,20 @@ capacitores e demais componentes possuem limites próprios.
 | Ethernet PHY/magnetics | 0,15 A |
 | ESP32-C3 em transmissão | 0,50 A |
 | ADC e front-end | 0,10 A |
-| isoladores e DC/DC | 0,45 A |
+| isoladores com potência integrada | 0,45 A |
 | microSD em pico | 0,25 A |
 | USB, LEDs e margem | 0,25 A |
 | **Total de projeto** | **2,00 A** |
 
-O buck será dimensionado para pelo menos 2,5 A. Correntes reais serão medidas no
-P0 e a tabela será substituída por resultados.
+O LM76002 é nominalmente 2,5 A e o TPS62132, 3 A. Correntes reais ainda devem
+ser medidas no primeiro protótipo.
 
 ## 4. Entradas analógicas
 
 - o ADS8684 oferece faixas programáveis por canal;
 - 0–10 V entra diretamente pelo caminho protegido;
 - 4–20 mA usa shunt de 249 Ω, 0,1%, baixa deriva, selecionado fisicamente;
-- 20 mA produz 4,98 V no shunt;
+- 4 mA produz 0,996 V e 20 mA produz 4,98 V no shunt;
 - cada canal terá proteção, filtro RC e ponto de teste;
 - os canais compartilham `AGND_FIELD`;
 - a calibração usa pelo menos zero, 25%, 50%, 75% e fundo de escala;
@@ -117,17 +117,18 @@ O LAN8742Ai liga-se ao STM32 por RMII. O projeto inclui cristal/clock conforme
 topologia escolhida, resistores de strap, magnetics, RJ45 blindado, ESD e ligação
 controlada ao chassi.
 
-O ESP32-C3:
+O ESP32-C3-WROOM-02:
 
 - é opcional;
 - recebe 3,3 V com chaveamento/reset independente;
-- comunica por UART de controle e, se necessário, SPI;
+- comunica por UART de controle;
 - não acessa diretamente RS-485, ADC, CAN ou chaves privadas;
 - pode ser removido e substituído pela variante com antena externa.
 
 ## 8. CAN reservado
 
-O ISO1042 suporta CAN clássico e CAN-FD. O P0 terá transceptor, terminação
+O ISOW1044 suporta CAN clássico e CAN-FD com potência isolada integrada. A
+Rev. A possui transceptor, TVS, terminação
 selecionável e conector, mas o firmware do MVP mantém o periférico desabilitado.
 Transmissão futura exigirá requisito, ADR e testes próprios.
 
@@ -143,8 +144,10 @@ Transmissão futura exigirá requisito, ADR e testes próprios.
 - serigrafia identifica claramente domínio, tensão e posição de terminação;
 - DRC não substitui revisão de creepage, clearance e caminho de retorno.
 
-## 10. Estado
+## 10. Estado digital
 
-Arquitetura, componentes principais e modelo dimensional P0 foram criados.
-Esquemático, cálculos de fonte/proteção, footprints, PCB e mecânica de produção
-permanecem pendentes; nenhum arquivo P0 está liberado para fabricação.
+O esquemático nativo e o PCB de quatro camadas existem em
+`hardware/edge18-main`; o ERC está limpo. O PCB passa por roteamento e DRC antes
+do pacote de fabricação. A liberação é uma revisão digital: protótipo,
+bring-up, temperatura, imunidade/surto, emissões e validação de isolamento
+continuam obrigatórios antes de instalação em campo.

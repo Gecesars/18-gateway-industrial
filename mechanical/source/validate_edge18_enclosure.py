@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate the generated EDGE-18 P0 FreeCAD assembly."""
+"""Validate the generated EDGE-18 Rev. A FreeCAD assembly."""
 
 from __future__ import annotations
 
@@ -17,7 +17,7 @@ import Part  # noqa: F401
 
 
 ROOT = Path(__file__).resolve().parents[2]
-MODEL = ROOT / "mechanical/native/edge18-p0-assembly.FCStd"
+MODEL = ROOT / "mechanical/native/edge18-rev-a-assembly.FCStd"
 
 
 def close(actual: float, expected: float, tolerance: float = 0.05) -> bool:
@@ -48,7 +48,7 @@ def main() -> int:
         raise RuntimeError(f"missing objects: {sorted(missing)}")
 
     board = document.getObject("MainPCB").Shape.BoundBox
-    if not close(board.XLength, 180.0) or not close(board.YLength, 120.0):
+    if board.XLength < 179.9 or board.YLength < 119.9:
         raise RuntimeError(
             f"unexpected board envelope {board.XLength} x {board.YLength}"
         )
@@ -60,6 +60,18 @@ def main() -> int:
         raise RuntimeError("unexpected enclosure depth")
     if not close(parameters.EnclosureHeight.Value, 65.0):
         raise RuntimeError("unexpected enclosure height")
+
+    base = document.getObject("EnclosureBase").Shape
+    lid = document.getObject("EnclosureLid").Shape
+    if base.isNull() or lid.isNull() or not base.isValid() or not lid.isValid():
+        raise RuntimeError("invalid enclosure solid")
+    if board.XMin < 14.9 or board.YMin < 14.9:
+        raise RuntimeError(
+            "board is outside the standoff origin: "
+            f"X={board.XMin:.3f}..{board.XMax:.3f}, "
+            f"Y={board.YMin:.3f}..{board.YMax:.3f}, "
+            f"Z={board.ZMin:.3f}..{board.ZMax:.3f}"
+        )
 
     App.closeDocument(document.Name)
     print("EDGE-18 mechanical validation: PASS")

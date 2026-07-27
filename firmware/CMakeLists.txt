@@ -1,7 +1,14 @@
 add_library(edge_core STATIC
+    src/config.c
+    src/journal.c
+    src/modbus.c
     src/modbus_crc.c
     src/point.c
     src/queue.c
+    src/scheduler.c
+    src/state_machine.c
+    src/telemetry.c
+    src/update_manifest.c
 )
 
 target_include_directories(edge_core

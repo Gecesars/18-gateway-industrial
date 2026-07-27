@@ -4,7 +4,7 @@
 
 O STM32H563ZIT6 é a autoridade do equipamento: adquire, valida, registra e
 decide o que pode sair da unidade. Ethernet é nativa ao MCU por RMII. O
-ESP32-C3-MINI-1 é um coprocessador opcional de Wi-Fi e nunca armazena a raiz de
+ESP32-C3-WROOM-02 é um coprocessador opcional de Wi-Fi e nunca armazena a raiz de
 identidade do produto. Ausência, reset ou comprometimento do módulo Wi-Fi não
 interrompe a aquisição cabeada.
 
@@ -22,10 +22,10 @@ interrompe a aquisição cabeada.
       │     │ GPIO/TIM ─ 2× ISO1212 ─ DI1..DI4 / pulso      │      │
       │     │ UART ─ ISOW1412 ─ RS485-A                     │      │
       │     │ UART ─ ISOW1412 ─ RS485-B                     │      │
-      │     │ FDCAN ─ ISO1042 + DC/DC ─ CAN (fase 2)        │      │
+      │     │ FDCAN ─ ISOW1044 ─ CAN/CAN-FD (fase 2)       │      │
       │     │ RMII ─ LAN8742A ─ magnetics/RJ45              │      │
-      │     │ UART/SPI ─ ESP32-C3-MINI-1 (opcional)         │      │
-      │     │ SDMMC ─ microSD; OctoSPI ─ flash de staging   │      │
+      │     │ UART ─ ESP32-C3-WROOM-02 (opcional/DNP)       │      │
+      │     │ SDMMC ─ microSD; SPI ─ flash de staging       │      │
       │     │ USB FS ─ USB-C de serviço; SWD de produção    │      │
       │     └────────────────────────────────────────────────┘      │
       └─────────────────────────────────────────────────────────────┘
@@ -35,16 +35,17 @@ interrompe a aquisição cabeada.
 
 | Domínio | Referência | Observação |
 |---|---|---|
-| lógica | `DGND` | MCU, Ethernet, USB, armazenamento e Wi-Fi |
-| analógico de campo | `AGND_FIELD` | quatro AI compartilham referência; não são isoladas entre si |
-| RS-485 A | `GND_485A` | barreira e potência isolada próprias |
-| RS-485 B | `GND_485B` | barreira e potência isolada próprias |
-| CAN | `GND_CAN` | barreira ISO1042 e DC/DC próprio |
-| entradas digitais | `FGND_DI` | isolamento para lógica; retorno de campo documentado |
+| lógica | `GND` | MCU, Ethernet, USB, armazenamento e Wi-Fi |
+| analógico | `AGND` | quatro AI compartilham referência; união por `R68` 0 Ω |
+| RS-485 A | `RS485A_GND` | barreira e potência isolada no ISOW1412 |
+| RS-485 B | `RS485B_GND` | barreira e potência isolada no ISOW1412 |
+| CAN | `CAN_GND` | barreira e potência isolada no ISOW1044 |
+| entradas digitais | `DI_FIELD_GND` | lado de campo comum dos dois ISO1212 |
 | chassi | `CHASSIS` | ligação controlada a blindagens e gabinete |
 
-`AGND_FIELD` e `DGND` serão unidos somente no ponto definido pelo projeto do
-front-end/ADC. Essa união não deve ser confundida com isolação de canal.
+`AGND` e `GND` são unidos somente em `R68`, junto ao ADC. Essa união não deve
+ser confundida com isolação de canal. Os três transceptores isolados possuem
+rasgo mecânico sob a barreira e zona sem cobre própria.
 
 ## 4. Partições de firmware
 

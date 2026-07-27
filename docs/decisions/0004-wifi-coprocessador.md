@@ -5,7 +5,7 @@
 
 ## Decisão
 
-Ethernet no STM32 é a rede principal. ESP32-C3-MINI-1 fornece Wi-Fi opcional e
+Ethernet no STM32 é a rede principal. ESP32-C3-WROOM-02 fornece Wi-Fi opcional e
 pode ser removido/desenergizado. Ele não controla I/O nem conserva a identidade
 raiz.
 

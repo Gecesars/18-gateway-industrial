@@ -3,5 +3,6 @@ dist/
 *.log
 *.tmp
 *.FCBak
+*.kicad_prl
 __pycache__/
 .venv/

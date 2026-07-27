@@ -21,15 +21,22 @@ interfaces pequenas de tempo, armazenamento, serial, rede e entropia.
 |---|---|
 | `edge_point` | valor, tipo, unidade, timestamp e qualidade |
 | `edge_queue` | fila limitada em RAM, política de pressão e métricas |
-| `edge_config` | validação semântica e promoção transacional |
-| `edge_scheduler` | agenda leituras sem bloquear portas |
-| `modbus_master` | framing, CRC, tentativas, exceções e agrupamento |
+| `edge_config` | validação semântica de dispositivos, referências e pontos |
+| `edge_scheduler` | agenda leituras com fase e backoff sem bloquear portas |
+| `modbus_master` | framing, CRC, respostas, exceções e endian |
 | `analog_input` | aquisição, filtros, calibração e diagnóstico |
 | `digital_input` | debounce, bordas, frequência e totalizadores |
-| `persistent_log` | journal, recuperação e compactação |
-| `mqtt_transport` | envelope, QoS, reconexão e idempotência |
+| `persistent_log` | journal com CRC/commit, recuperação e compactação |
+| `mqtt_transport` | envelope limitado, QoS, reconexão e idempotência |
 | `health` | watchdog, reset cause, recursos e self-test |
-| `secure_update` | staging, assinatura, compatibilidade e rollback |
+| `secure_update` | alvo, hash, assinatura, contador e rollback |
+
+O núcleo host implementado corresponde a `edge_point`, `edge_queue`,
+`edge_config`, `edge_scheduler`, framing/decodificação de `modbus_master`,
+formato de `persistent_log`, envelope de telemetria, máquina de estados e
+validação de manifesto. Drivers STM32, RTOS, rede e sistema de arquivos ficam
+na porta de hardware e só podem ser considerados concluídos após integração
+HIL.
 
 ## 3. Tarefas previstas
 
@@ -80,11 +87,11 @@ consumidores não devem tratá-lo como medida válida.
 
 ## 6. Fila
 
-O núcleo implementa primeiro uma fila limitada em RAM, testável no host. A
-persistência P0 adicionará journal no microSD com:
+O núcleo implementa fila limitada em RAM e um codec de journal testável no
+host. A porta de persistência no microSD deve preservar:
 
 - cabeçalho, versão, comprimento, sequência e CRC;
-- commit marker gravado por último;
+- marcador de commit de 32 bits gravado por último;
 - recuperação até o último registro completo;
 - segmentos fechados imutáveis;
 - confirmação MQTT por faixa de sequência;
@@ -99,6 +106,11 @@ persistência P0 adicionará journal no microSD com:
 5. reiniciar em modo de tentativa;
 6. executar self-test e marcar boot saudável;
 7. reverter automaticamente se o prazo expirar.
+
+O validador implementado rejeita alvo incompatível, imagem vazia ou grande
+demais, contador de segurança não crescente, digest SHA-256 nulo e assinatura
+inválida. A criptografia é injetada por callback para que a implementação de
+alvo use a zona segura, sem uma falsa verificação no código portátil.
 
 ## 8. Critérios de código
 

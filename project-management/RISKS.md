@@ -13,6 +13,8 @@
 | R-18-09 | corrupção do microSD | alto | journal, CRC, cortes e mídia qualificada | aberto |
 | R-18-10 | filho bifurcar contratos | alto | releases e testes de contrato | mitigação iniciada |
 | R-18-11 | usuário interpretar P0 como produto | crítico | status explícito e gates | mitigado documentalmente |
+| R-18-12 | fabricar a PCB com conexões/DRC pendentes | crítico | bloquear Gerbers, relatório commitado e aviso em todos os artefatos | aberto; layout congelado |
+| R-18-13 | colisão mecânica não vista por modelo 3D ausente | médio | obter STEP de dez referências e repetir inspeção | aberto |
 
 Riscos são revisados em cada gate. Mitigação planejada não significa risco
 fechado.

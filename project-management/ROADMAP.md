@@ -2,9 +2,9 @@
 
 | Gate | Conteúdo | Estado | Saída |
 |---|---|---|---|
-| G0 | requisitos, ADRs, schemas e núcleo host | em andamento | contratos v0.1 e testes |
-| G1 | esquema, cálculos e ERC | pendente | KiCad P0 revisado |
-| G2 | PCB, mecânica, DRC e fabricação | pendente | pacote P0 não comercial |
+| G0 | requisitos, ADRs, schemas e núcleo host | concluído digitalmente | contratos v0.1 e testes |
+| G1 | esquema, cálculos e ERC | concluído digitalmente | KiCad Rev. A, ERC limpo |
+| G2 | PCB, mecânica, DRC e fabricação | bloqueado no layout congelado | exige 0 DRC e 0 conexões |
 | G3 | alimentação, clock, debug e storage | pendente | relatório de bring-up |
 | G4 | RS-485, Modbus, AI e DI | pendente | matriz de I/O |
 | G5 | Ethernet, TLS, MQTT e fila persistente | pendente | ensaio integrado |
