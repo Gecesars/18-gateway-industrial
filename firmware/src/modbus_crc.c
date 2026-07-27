@@ -1,5 +1,7 @@
 #include "edge/modbus_crc.h"
 
+#include <stdbool.h>
+
 uint16_t edge_modbus_crc16(const uint8_t *data, size_t length)
 {
     uint16_t crc = UINT16_C(0xFFFF);
