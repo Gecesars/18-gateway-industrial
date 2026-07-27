@@ -11,5 +11,11 @@
 9. [Fabricação e implantação](08-fabricacao-e-implantacao.md)
 10. [Operação e manutenção](09-operacao-e-manutencao.md)
 11. [Controle documental](10-controle-documental.md)
+12. [Reutilização pelos projetos filhos](11-reutilizacao.md)
+13. [Fontes primárias e seleção](12-fontes-primarias.md)
+14. [Orçamento de pinos e periféricos](13-pinout-preliminar.md)
+15. [Modelo de ameaças](14-modelo-de-ameacas.md)
 
 O estado vivo do projeto fica em [`../project-management/`](../project-management/).
+
+Decisões arquiteturais ficam em [`decisions/`](decisions/).

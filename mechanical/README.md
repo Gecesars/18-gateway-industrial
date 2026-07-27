@@ -1,18 +1,28 @@
-# Mechanical
+# Mecânica EDGE-18
 
-## Finalidade
+## P0 dimensional
 
-Gabinetes, painéis, suportes e integração física.
+- gabinete: 210 × 150 × 65 mm;
+- PCB: 180 × 120 × 1,6 mm;
+- seis pontos de fixação M3;
+- tampa removível;
+- aberturas-envelope para Ethernet, USB e terminais;
+- volumes funcionais para fonte, analógicas, digitais, MCU, barramentos,
+  Ethernet e keep-out da antena.
 
-## Entregáveis esperados
+Fontes:
 
-- fonte FreeCAD
-- STEP/STL
-- desenhos cotados
-- verificação de interferências
+- `source/generate_edge18_enclosure.py`;
+- `source/validate_edge18_enclosure.py`;
+- `native/edge18-p0-assembly.FCStd`;
+- `step/edge18-p0-*.step`.
 
-## Estado
+Regeneração:
 
-Pasta reservada; não há artefato implementado na baseline de 2026-07-26. Quando
-arquivos forem adicionados, este documento deverá indicar ferramenta, versão,
-como regenerar/validar e qual requisito é atendido.
+```bash
+./tools/generate-mechanical.sh
+```
+
+O modelo prova dimensões e particionamento. Não contém conectores finais,
+parafusos, tolerâncias de fabricação, vedação, ventilação ou desenho de oficina;
+não está liberado para fabricação.

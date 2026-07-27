@@ -1,30 +1,80 @@
 # Verificação e validação
 
-## Matriz inicial
+## 1. Estado da evidência
 
-| Teste | Critério | Estado | Evidência |
+`passou` significa que relatório e dados estão no repositório ou artefato
+identificado. Código que compila não valida hardware. Simulação não substitui
+ensaio.
+
+## 2. Matriz P0
+
+| ID | Teste | Critério | Estado |
 |---|---|---|---|
-| VT-18-01 | configuração inválida isolada | pendente | relatório + dados brutos |
-| VT-18-02 | RS-485 ensaiado | pendente | relatório + dados brutos |
-| VT-18-03 | qualidade distingue falhas | pendente | relatório + dados brutos |
-| VT-18-04 | fila com política explícita | pendente | relatório + dados brutos |
-| VT-18-05 | update/rollback preservam configuração | pendente | relatório + dados brutos |
+| VT-CORE-01 | build C17 com warnings como erro | compila no host | passou |
+| VT-CORE-02 | fila FIFO e wrap-around | ordem preservada | passou |
+| VT-CORE-03 | overflow `reject-new` | item novo rejeitado sem perder antigo | passou |
+| VT-CORE-04 | overflow `drop-oldest` | contador e itens corretos | passou |
+| VT-CORE-05 | máscara de qualidade | bits independentes | passou |
+| VT-CORE-06 | CRC Modbus | vetor conhecido `0xCDC5` | passou |
+| VT-CFG-01 | schemas JSON | Draft 2020-12 válido | passou no host |
+| VT-CFG-02 | exemplos | válidos e invariantes coerentes | passou no host |
+| VT-MEC-01 | modelo dimensional FreeCAD | gabinete 210 × 150 × 65 mm, PCB 180 × 120 mm e objetos esperados | passou |
+| VT-PWR-01 | entrada 9–36 V | rails dentro da tolerância | pendente de hardware |
+| VT-PWR-02 | inversão e brownout | sem dano/configuração parcial | pendente |
+| VT-RS-01 | duas RS-485 | simultâneas, isoladas, matriz de baud/paridade | pendente |
+| VT-MB-01 | funções Modbus de leitura | simulador e exceções | pendente |
+| VT-AI-01 | 0–10 V | erro ≤ meta por canal | pendente |
+| VT-AI-02 | 4–20 mA | erro e diagnósticos por canal | pendente |
+| VT-DI-01 | limiares 24 V | quatro canais | pendente |
+| VT-DI-02 | pulso | 10 kHz/50 µs | pendente |
+| VT-ETH-01 | Ethernet | DHCP, estático, perda/retorno | pendente |
+| VT-TLS-01 | autenticação | válido, expirado, revogado e relógio inválido | pendente |
+| VT-MQ-01 | QoS 1/reconexão | duplicatas idempotentes | pendente |
+| VT-BUF-01 | capacidade | 1.000.000 registros | pendente |
+| VT-BUF-02 | corte de energia | 100 cortes sem corrupção além do registro parcial | pendente |
+| VT-UPD-01 | imagem alterada | rejeitada | pendente |
+| VT-UPD-02 | falha de boot | rollback preserva dados/configuração | pendente |
+| VT-REL-01 | operação contínua | 30 dias sem travamento | pendente |
+| VT-SEC-01 | portas e segredos | superfície conforme modelo; nenhum segredo em log | pendente |
 
-## Níveis de teste
+## 3. Bancadas
 
-1. revisão de requisito e cálculo;
-2. teste unitário/simulação;
-3. inspeção e teste elétrico sem função perigosa;
-4. integração em bancada com simuladores;
-5. ensaio progressivo no envelope especificado;
-6. piloto acompanhado;
-7. regressão após alteração de hardware, firmware ou calibração.
+### 3.1 Digital/firmware
 
-## Regras de evidência
+- computador Linux;
+- simulador Modbus;
+- broker MQTT com CA de laboratório;
+- injeção de perda, atraso, duplicação e corrupção;
+- arquivos/cartões com falhas simuladas.
 
-- relatório referencia revisão/commit e número de série;
-- dados brutos são preservados em formato aberto;
-- instrumentos e incertezas relevantes são identificados;
-- falha não é apagada por repetição bem-sucedida;
-- critério alterado depois do teste exige justificativa e nova revisão;
-- a coluna Estado só muda quando a evidência estiver acessível.
+### 3.2 Elétrica
+
+- fonte isolada programável com limite;
+- multímetro calibrado;
+- osciloscópio;
+- gerador de função/pulsos;
+- fonte 0–10 V e calibrador 4–20 mA;
+- adaptadores RS-485/CAN isolados;
+- câmera térmica ou termopares;
+- carga eletrônica.
+
+### 3.3 Pré-compliance
+
+- ESD/EFT/surge somente depois da revisão de segurança;
+- LISN/célula TEM quando disponível;
+- captura de emissões do buck, Ethernet e Wi-Fi;
+- ensaios repetidos nas configurações de terminação.
+
+## 4. Evidência
+
+Cada relatório contém:
+
+- requisito/teste;
+- commit e revisão de hardware;
+- número de série;
+- instrumentos e validade de calibração;
+- diagrama de ligação;
+- entradas, configuração e ambiente;
+- dados brutos;
+- resultado, anomalias e responsável;
+- impacto sobre riscos e próximos gates.

@@ -1,41 +1,61 @@
-# Projeto 18 — Gateway Industrial Modbus/CAN Universal
+# EDGE-18 — Gateway Industrial Modbus/CAN Universal
 
-**Categoria:** Automação industrial
-**Estado:** concepção documentada; implementação ainda não iniciada
-**Baseline documental:** 2026-07-26
+Plataforma-pai para aquisição industrial e telemetria dos demais projetos do
+portfólio. O EDGE-18 lê Modbus RTU, quatro sinais 0–10 V/4–20 mA e quatro
+entradas digitais/pulso, conserva dados offline e publica por MQTT/TLS.
 
-## Objetivo
+> **Estado: Gate G0 em desenvolvimento.**
+> Arquitetura, contratos, schemas, núcleo testável no host e modelo mecânico
+> dimensional P0 existem. Não há esquemático, PCB, firmware STM32 inicializável
+> ou protótipo físico. Nada está liberado para fabricação ou instalação.
 
-Integrar equipamentos legados a MQTT/REST por configuração web, com qualidade de dados, regras locais e buffer offline.
+## Arquitetura P0
 
-## Usuários
+| Bloco | Seleção |
+|---|---|
+| MCU | STM32H563ZIT6, Cortex-M33/TrustZone |
+| Ethernet | LAN8742Ai, RMII 10/100 |
+| Wi-Fi | ESP32-C3-MINI-1 opcional |
+| RS-485 | 2 × ISOW1412 isoladas |
+| Analógicas | ADS8684, quatro canais de 16 bits |
+| Digitais | 2 × ISO1212, quatro entradas de 24 V |
+| CAN | ISO1042 reservado para fase 2 |
+| Alimentação | 9–36 Vcc; LM76002 como referência |
+| PCB | 180 × 120 mm, quatro camadas |
 
-- integradores
-- pequenas indústrias
-- manutenção e automação
+O MVP é somente de monitoramento. Não possui saídas de comando e não substitui
+CLP ou relé de segurança.
 
-## MVP
+## Implementado
 
-Modbus RTU mestre, quatro analógicas, quatro digitais, Ethernet, MQTT e diagnóstico/configuração web; CAN/OPC-UA entram depois.
+- requisitos verificáveis e seis ADRs;
+- arquitetura elétrica e de software;
+- contratos de configuração e telemetria em JSON Schema;
+- exemplos válidos;
+- modelo C17 de ponto/qualidade;
+- fila limitada com métricas e políticas de overflow;
+- CRC-16 Modbus;
+- conjunto dimensional FreeCAD/STEP do gabinete e PCB;
+- testes no host e CI.
 
-## Estrutura
+## Verificação local
 
-- `docs/`: especificação técnica e operacional.
-- `project-management/`: andamento, backlog, riscos, decisões e atas.
-- `hardware/`: fontes eletrônicas e BOM quando o desenvolvimento começar.
-- `firmware/`: software embarcado e testes.
-- `software/`: backend, frontend, aplicativos e ferramentas.
-- `mechanical/`: gabinetes, suportes e desenhos.
-- `simulation/`: modelos e estudos.
-- `tests/`: planos, fixtures, dados e evidências.
-- `manufacturing/`: fabricação, montagem e implantação.
-- `tools/`: automação reproduzível.
+```bash
+./tools/run-checks.sh
+```
 
-## Regras de estado
+## Navegação
 
-Uma caixa marcada representa evidência existente, não intenção. O projeto não
-deve ser apresentado como protótipo, validado ou comercial até que os gates
-correspondentes em `project-management/ROADMAP.md` estejam concluídos.
+- [índice técnico](docs/README.md);
+- [requisitos](docs/01-requisitos.md);
+- [arquitetura](docs/02-arquitetura.md);
+- [hardware](docs/03-hardware.md);
+- [software](docs/04-software.md);
+- [fontes primárias](docs/12-fontes-primarias.md);
+- [status](project-management/STATUS.md);
+- [roadmap](project-management/ROADMAP.md).
 
-Comece por [`docs/README.md`](docs/README.md) e
-[`project-management/STATUS.md`](project-management/STATUS.md).
+## Licença
+
+A licença ainda não foi definida. Não redistribua artefatos como se uma licença
+já tivesse sido concedida.

@@ -1,0 +1,21 @@
+{
+  "schema": "edge.telemetry/1",
+  "device_id": "edge18-lab-0001",
+  "boot_id": "9f462527",
+  "message_id": "0000000000018a42",
+  "sent_at_ms": 1785100000123,
+  "points": [
+    {
+      "point_id": "tank.level",
+      "sequence": 18720,
+      "timestamp_ms": 1785099999980,
+      "monotonic_ms": 623991,
+      "value_type": "f64",
+      "value": 73.2,
+      "unit": "%",
+      "quality": 0,
+      "source": "ai1",
+      "config_revision": 1
+    }
+  ]
+}

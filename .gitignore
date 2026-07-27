@@ -2,5 +2,6 @@ build/
 dist/
 *.log
 *.tmp
+*.FCBak
 __pycache__/
 .venv/

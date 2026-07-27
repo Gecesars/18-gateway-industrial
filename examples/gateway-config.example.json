@@ -1,0 +1,77 @@
+{
+  "schema_version": "edge.config/1",
+  "revision": 1,
+  "device": {
+    "device_id": "edge18-lab-0001",
+    "tenant": "eftx-lab",
+    "site": "bench-a"
+  },
+  "network": {
+    "ethernet": {
+      "mode": "dhcp",
+      "dns": ["1.1.1.1"]
+    },
+    "wifi_enabled": false,
+    "ntp_servers": ["pool.ntp.org"]
+  },
+  "mqtt": {
+    "host": "mqtt.example.invalid",
+    "port": 8883,
+    "topic_prefix": "edge/v1/eftx-lab/bench-a/edge18-lab-0001",
+    "tls_profile": "server-auth-lab",
+    "keepalive_seconds": 60
+  },
+  "storage": {
+    "max_records": 1000000,
+    "overflow_policy": "drop-oldest",
+    "segment_records": 4096
+  },
+  "modbus_devices": [
+    {
+      "id": "meter-1",
+      "port": "rs485-a",
+      "slave": 1,
+      "baud": 9600,
+      "parity": "even",
+      "timeout_ms": 500,
+      "retries": 2
+    }
+  ],
+  "points": [
+    {
+      "id": "meter.voltage_l1",
+      "source": "modbus",
+      "unit": "V",
+      "period_ms": 1000,
+      "stale_ms": 5000,
+      "device": "meter-1",
+      "function": 3,
+      "address": 0,
+      "data_type": "u16",
+      "byte_order": "AB",
+      "scale": 0.1,
+      "offset": 0.0
+    },
+    {
+      "id": "tank.level",
+      "source": "analog",
+      "unit": "%",
+      "period_ms": 1000,
+      "stale_ms": 5000,
+      "channel": 1,
+      "mode": "4-20mA",
+      "scale": 6.25,
+      "offset": -25.0
+    },
+    {
+      "id": "door.open",
+      "source": "digital",
+      "unit": "1",
+      "period_ms": 100,
+      "stale_ms": 1000,
+      "channel": 1,
+      "mode": "state",
+      "debounce_ms": 50
+    }
+  ]
+}

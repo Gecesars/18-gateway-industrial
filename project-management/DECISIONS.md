@@ -1,10 +1,12 @@
 # Registro de decisões
 
-| ID | Data | Estado | Decisão | Próxima revisão |
-|---|---|---|---|---|
-| D-18-01 | 2026-07-26 | proposta de baseline | O MVP terá Modbus RTU, não todas as interfaces. | revisar no gate de arquitetura |
-| D-18-02 | 2026-07-26 | proposta de baseline | Qualidade de dado será parte do modelo. | revisar no gate de arquitetura |
-| D-18-03 | 2026-07-26 | proposta de baseline | Configuração e firmware terão rollback. | revisar no gate de arquitetura |
+| ADR | Decisão | Estado |
+|---|---|---|
+| [0001](../docs/decisions/0001-mcu-stm32h563.md) | STM32H563ZIT6 como controlador | aceito P0 |
+| [0002](../docs/decisions/0002-monitoramento-sem-saidas.md) | MVP somente de monitoramento | aceito |
+| [0003](../docs/decisions/0003-isolacao-de-campo.md) | isolamento das interfaces de campo | aceito P0 |
+| [0004](../docs/decisions/0004-wifi-coprocessador.md) | Wi-Fi como coprocessador opcional | aceito P0 |
+| [0005](../docs/decisions/0005-contratos-versionados.md) | contratos mantidos no projeto-pai | aceito |
+| [0006](../docs/decisions/0006-dimensoes-p0.md) | placa sem miniaturização agressiva | aceito P0 |
 
-Decisões arquiteturais definitivas devem ganhar um ADR individual com contexto,
-alternativas, justificativa e consequências.
+Novas decisões estruturais exigem ADR com alternativas e consequências.

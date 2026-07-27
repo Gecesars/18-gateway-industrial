@@ -1,18 +1,37 @@
-# Backlog inicial
+# Backlog
 
-- [ ] B-18-001 — Revisar e aprovar o objetivo e o usuário principal
-- [ ] B-18-002 — Transformar critérios de aceite em casos de teste detalhados
-- [ ] B-18-003 — Selecionar componentes/tecnologias críticas com alternativas
-- [ ] B-18-004 — Criar diagramas editáveis de blocos, estados e implantação
-- [ ] B-18-005 — Preparar orçamento de potência, custo e instrumentação
-- [ ] B-18-006 — Criar primeiro protótipo ou simulador mínimo
-- [ ] B-18-007 — Configurar build, testes e CI
-- [ ] B-18-008 — Executar revisão de segurança antes de energizar/instalar
-- [ ] B-18-009 — Registrar resultados e atualizar o status
+## Concluído
+
+- [x] B-18-001 — fechar objetivo e MVP somente leitura;
+- [x] B-18-002 — transformar o MVP em requisitos;
+- [x] B-18-003 — selecionar arquitetura e componentes críticos;
+- [x] B-18-004 — criar contratos JSON;
+- [x] B-18-005 — implementar núcleo C testável;
+- [x] B-18-006 — configurar build, testes e CI.
+- [x] B-18-025 — criar FreeCAD P0 e verificar envelopes dimensionais;
+
+## G0
+
+- [ ] B-18-010 — implementar tipos/conversões Modbus;
+- [ ] B-18-011 — implementar planejador de leituras;
+- [ ] B-18-012 — definir journal persistente e testes de corte;
+- [ ] B-18-013 — parser/validador C da configuração;
+- [ ] B-18-014 — revisar schemas com os Projetos 1 e 11;
+- [ ] B-18-015 — escolher licença.
+
+## G1/G2
+
+- [ ] B-18-020 — fechar pinout STM32;
+- [ ] B-18-021 — calcular fonte/proteção;
+- [ ] B-18-022 — criar esquemático KiCad;
+- [ ] B-18-023 — revisar footprints;
+- [ ] B-18-024 — criar PCB de quatro camadas;
+- [ ] B-18-026 — ERC/DRC e revisão independente;
+- [ ] B-18-027 — gerar BOM e pacote P0.
 
 ## Regras
 
-- itens recebem responsável e critério de pronto antes de entrar em execução;
-- defeitos e dívida técnica não são ocultados em atas;
-- uma tarefa concluída referencia commit, documento ou relatório;
-- novas ideias fora do MVP entram no backlog, não no escopo corrente.
+- concluído referencia commit ou relatório;
+- trabalho fora do MVP não interrompe os gates;
+- defeitos e riscos permanecem visíveis;
+- nenhuma data é inventada sem responsável e capacidade.

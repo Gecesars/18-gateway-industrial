@@ -1,23 +1,18 @@
 # Roadmap e gates
 
-| Gate | Fase | Estado | Saída necessária |
+| Gate | Conteúdo | Estado | Saída |
 |---|---|---|---|
-| G1 | modelo JSON | pendente | critérios e evidências da fase aprovados |
-| G2 | hardware | pendente | critérios e evidências da fase aprovados |
-| G3 | Modbus/I/O | pendente | critérios e evidências da fase aprovados |
-| G4 | web/MQTT | pendente | critérios e evidências da fase aprovados |
-| G5 | regras | pendente | critérios e evidências da fase aprovados |
-| G6 | interfaces adicionais | pendente | critérios e evidências da fase aprovados |
+| G0 | requisitos, ADRs, schemas e núcleo host | em andamento | contratos v0.1 e testes |
+| G1 | esquema, cálculos e ERC | pendente | KiCad P0 revisado |
+| G2 | PCB, mecânica, DRC e fabricação | pendente | pacote P0 não comercial |
+| G3 | alimentação, clock, debug e storage | pendente | relatório de bring-up |
+| G4 | RS-485, Modbus, AI e DI | pendente | matriz de I/O |
+| G5 | Ethernet, TLS, MQTT e fila persistente | pendente | ensaio integrado |
+| G6 | confiabilidade e pré-compliance | pendente | 30 dias + relatório |
+| G7 | piloto somente leitura | bloqueado por G0–G6 | aceite de campo |
+| G8 | CAN/OPC-UA/expansões | fora do MVP | nova baseline |
 
-## Regra de avanço
+## Regra
 
-O gate seguinte só começa quando requisitos, riscos, evidências e decisões da
-fase anterior forem revisados. Trabalho exploratório pode ocorrer em paralelo,
-mas não altera o estado oficial.
-
-## MVP
-
-Modbus RTU mestre, quatro analógicas, quatro digitais, Ethernet, MQTT e diagnóstico/configuração web; CAN/OPC-UA entram depois.
-
-Datas e custos serão incluídos depois que responsável, disponibilidade e
-dependências forem confirmados; não serão inventados nesta baseline.
+Um gate só conclui com evidência. Fontes geradas não equivalem a placa montada;
+simulação não equivale a ensaio; piloto não equivale a produto certificado.

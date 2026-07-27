@@ -1,43 +1,112 @@
-# Software e firmware
+# Software e firmware EDGE-18
 
-## Componentes previstos
+## 1. Plataforma
 
-| ID | Componente | Estado |
-|---|---|---|
-| SW-18-01 | scheduler de aquisição | planejado |
-| SW-18-02 | Modbus mestre | planejado |
-| SW-18-03 | modelo JSON | planejado |
-| SW-18-04 | editor web | planejado |
-| SW-18-05 | MQTT/REST | planejado |
-| SW-18-06 | fila e atualização com rollback | planejado |
+- linguagem do núcleo: C17;
+- RTOS-alvo: FreeRTOS;
+- rede: LwIP;
+- TLS: mbedTLS;
+- MQTT: cliente com QoS 1 e sessão controlada;
+- armazenamento: camada própria sobre FatFs/driver de bloco;
+- build: CMake para núcleo host; toolchain Arm para alvo;
+- schemas: JSON Schema Draft 2020-12;
+- testes: executáveis no host sem placa e testes HIL no protótipo.
 
-## Organização proposta
+O código de domínio não incluirá headers da HAL STM32. A porta alvo implementa
+interfaces pequenas de tempo, armazenamento, serial, rede e entropia.
 
-- `firmware/`: HAL, drivers, serviços de domínio e testes embarcados;
-- `software/backend/`: ingestão, regras, persistência e APIs;
-- `software/frontend/`: interface de usuário;
-- `software/tools/`: calibração, provisionamento, exportação e diagnóstico;
-- configurações e protocolos terão schema e número de versão.
+## 2. Módulos
 
-## Requisitos de qualidade
+| Módulo | Responsabilidade |
+|---|---|
+| `edge_point` | valor, tipo, unidade, timestamp e qualidade |
+| `edge_queue` | fila limitada em RAM, política de pressão e métricas |
+| `edge_config` | validação semântica e promoção transacional |
+| `edge_scheduler` | agenda leituras sem bloquear portas |
+| `modbus_master` | framing, CRC, tentativas, exceções e agrupamento |
+| `analog_input` | aquisição, filtros, calibração e diagnóstico |
+| `digital_input` | debounce, bordas, frequência e totalizadores |
+| `persistent_log` | journal, recuperação e compactação |
+| `mqtt_transport` | envelope, QoS, reconexão e idempotência |
+| `health` | watchdog, reset cause, recursos e self-test |
+| `secure_update` | staging, assinatura, compatibilidade e rollback |
 
-- build reproduzível e dependências fixadas;
-- análise estática, formatação e testes executáveis em CI;
-- testes unitários do domínio sem exigir hardware;
-- simuladores/fakes para sensores e protocolos;
-- watchdog, métricas de saúde e logs sem segredos;
-- atualização com verificação, migração de configuração e recuperação;
-- limites de fila, timeout, repetição e descarte explicitamente definidos.
+## 3. Tarefas previstas
 
-## Dados fundamentais
+| Tarefa | Prioridade | Período/evento | Watchdog |
+|---|---:|---|---|
+| supervisor | máxima | 100 ms | alimenta IWDG após consenso |
+| entradas digitais | alta | interrupção + 1 ms | contador de progresso |
+| aquisição analógica | alta | 10–1.000 ms | deadline |
+| Modbus A/B | alta | por agenda | deadline por transação |
+| persistência | média | fila/evento | backlog máximo |
+| publicador MQTT | média | fila/rede | heartbeat |
+| rede/tempo | média | eventos | estado |
+| REST/configuração | baixa | conexão local | timeout |
+| diagnóstico | baixa | 1 s | não crítico |
 
-- ponto/endereço/tipo/escala
-- valor/qualidade/timestamp
-- configuração/versionamento
-- evento/regra
-- diagnóstico
+Somente o supervisor alimenta o watchdog, e apenas quando as tarefas críticas
+avançaram dentro da janela.
 
-## Estado atual
+## 4. Memória
 
-Não há implementação nesta baseline. O primeiro commit de código deverá incluir
-instruções de build/teste e um teste mínimo automatizado.
+- nenhuma alocação dinâmica no caminho de aquisição após o boot;
+- tabelas de até 32 dispositivos e 128 pontos alocadas na promoção de
+  configuração;
+- buffers de protocolo têm limites compilados;
+- mensagens grandes são serializadas por partes;
+- certificados e chaves possuem área dedicada;
+- métricas incluem high-water mark de pilha, heap e filas.
+
+## 5. Qualidade do ponto
+
+A qualidade é uma máscara de bits. `GOOD` é zero; falhas podem coexistir.
+
+| Bit | Nome | Significado |
+|---:|---|---|
+| 0 | `COMM_TIMEOUT` | dispositivo não respondeu |
+| 1 | `COMM_CRC` | quadro corrompido |
+| 2 | `PROTOCOL_EXCEPTION` | exceção do protocolo |
+| 3 | `OUT_OF_RANGE` | fora da faixa configurada |
+| 4 | `SENSOR_FAULT` | diagnóstico do canal |
+| 5 | `STALE` | idade maior que o limite |
+| 6 | `TIME_UNSYNCED` | UTC não confiável |
+| 7 | `CONVERSION_ERROR` | tipo/escala inválidos |
+| 8 | `CONFIG_ERROR` | entidade desabilitada pela configuração |
+| 9 | `STORAGE_DEGRADED` | persistência não garantida |
+
+Um valor pode ser transportado para diagnóstico com qualidade ruim, mas
+consumidores não devem tratá-lo como medida válida.
+
+## 6. Fila
+
+O núcleo implementa primeiro uma fila limitada em RAM, testável no host. A
+persistência P0 adicionará journal no microSD com:
+
+- cabeçalho, versão, comprimento, sequência e CRC;
+- commit marker gravado por último;
+- recuperação até o último registro completo;
+- segmentos fechados imutáveis;
+- confirmação MQTT por faixa de sequência;
+- descarte do segmento mais antigo somente com métrica e evento.
+
+## 7. Atualização
+
+1. baixar por canal autenticado;
+2. validar manifesto, hardware, tamanho e hash;
+3. verificar assinatura na zona segura;
+4. gravar slot inativo/staging;
+5. reiniciar em modo de tentativa;
+6. executar self-test e marcar boot saudável;
+7. reverter automaticamente se o prazo expirar.
+
+## 8. Critérios de código
+
+- warnings tratados como erro;
+- API documentada e tipos de largura explícita;
+- nenhuma função bloqueante sem timeout;
+- erros não convertidos em booleano genérico;
+- logs estruturados, sem segredos;
+- testes de limite, wrap-around, fila cheia e entradas inválidas;
+- fuzzing futuro para parser de configuração e Modbus;
+- CI executa build, testes, schemas e verificações de documentação.

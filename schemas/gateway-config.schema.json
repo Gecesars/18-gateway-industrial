@@ -1,0 +1,202 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Gecesars/18-gateway-industrial/schemas/gateway-config.schema.json",
+  "title": "EDGE-18 gateway configuration",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "revision",
+    "device",
+    "network",
+    "mqtt",
+    "storage",
+    "modbus_devices",
+    "points"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "edge.config/1"
+    },
+    "revision": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 4294967295
+    },
+    "device": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["device_id", "tenant", "site"],
+      "properties": {
+        "device_id": {"$ref": "#/$defs/identifier"},
+        "tenant": {"$ref": "#/$defs/identifier"},
+        "site": {"$ref": "#/$defs/identifier"}
+      }
+    },
+    "network": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["ethernet", "ntp_servers"],
+      "properties": {
+        "ethernet": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["mode"],
+          "properties": {
+            "mode": {"enum": ["dhcp", "static"]},
+            "address": {"type": "string", "maxLength": 45},
+            "prefix_length": {"type": "integer", "minimum": 0, "maximum": 128},
+            "gateway": {"type": "string", "maxLength": 45},
+            "dns": {
+              "type": "array",
+              "maxItems": 3,
+              "items": {"type": "string", "maxLength": 253}
+            }
+          },
+          "allOf": [
+            {
+              "if": {"properties": {"mode": {"const": "static"}}},
+              "then": {"required": ["address", "prefix_length", "gateway"]}
+            }
+          ]
+        },
+        "wifi_enabled": {"type": "boolean", "default": false},
+        "ntp_servers": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 3,
+          "items": {"type": "string", "minLength": 1, "maxLength": 253}
+        }
+      }
+    },
+    "mqtt": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["host", "port", "topic_prefix", "tls_profile"],
+      "properties": {
+        "host": {"type": "string", "minLength": 1, "maxLength": 253},
+        "port": {"type": "integer", "minimum": 1, "maximum": 65535},
+        "topic_prefix": {
+          "type": "string",
+          "pattern": "^edge/v1/[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+$",
+          "maxLength": 180
+        },
+        "tls_profile": {"enum": ["mutual-production", "server-auth-lab"]},
+        "keepalive_seconds": {"type": "integer", "minimum": 10, "maximum": 3600, "default": 60}
+      }
+    },
+    "storage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["max_records", "overflow_policy"],
+      "properties": {
+        "max_records": {"type": "integer", "minimum": 1000, "maximum": 10000000},
+        "overflow_policy": {"enum": ["drop-oldest", "stop-persisting"]},
+        "segment_records": {"type": "integer", "minimum": 64, "maximum": 65536, "default": 4096}
+      }
+    },
+    "modbus_devices": {
+      "type": "array",
+      "maxItems": 32,
+      "items": {"$ref": "#/$defs/modbus_device"}
+    },
+    "points": {
+      "type": "array",
+      "maxItems": 128,
+      "items": {"$ref": "#/$defs/point"}
+    }
+  },
+  "$defs": {
+    "identifier": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]{0,47}$"
+    },
+    "modbus_device": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "port", "slave", "baud", "parity", "timeout_ms", "retries"],
+      "properties": {
+        "id": {"$ref": "#/$defs/identifier"},
+        "port": {"enum": ["rs485-a", "rs485-b"]},
+        "slave": {"type": "integer", "minimum": 1, "maximum": 247},
+        "baud": {"enum": [1200, 2400, 4800, 9600, 19200, 38400, 57600, 115200]},
+        "parity": {"enum": ["none", "even", "odd"]},
+        "timeout_ms": {"type": "integer", "minimum": 20, "maximum": 10000},
+        "retries": {"type": "integer", "minimum": 0, "maximum": 5}
+      }
+    },
+    "point": {
+      "oneOf": [
+        {"$ref": "#/$defs/modbus_point"},
+        {"$ref": "#/$defs/analog_point"},
+        {"$ref": "#/$defs/digital_point"}
+      ]
+    },
+    "point_common": {
+      "type": "object",
+      "required": ["id", "source", "unit", "period_ms", "stale_ms"],
+      "properties": {
+        "id": {"$ref": "#/$defs/identifier"},
+        "source": {"enum": ["modbus", "analog", "digital"]},
+        "unit": {"type": "string", "maxLength": 16},
+        "period_ms": {"type": "integer", "minimum": 10, "maximum": 86400000},
+        "stale_ms": {"type": "integer", "minimum": 20, "maximum": 604800000}
+      }
+    },
+    "modbus_point": {
+      "allOf": [
+        {"$ref": "#/$defs/point_common"},
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["id", "source", "unit", "period_ms", "stale_ms", "device", "function", "address", "data_type", "byte_order", "scale", "offset"],
+          "properties": {
+            "id": {"$ref": "#/$defs/identifier"},
+            "source": {"const": "modbus"},
+            "unit": {"type": "string", "maxLength": 16},
+            "period_ms": {"type": "integer", "minimum": 50, "maximum": 86400000},
+            "stale_ms": {"type": "integer", "minimum": 100, "maximum": 604800000},
+            "device": {"$ref": "#/$defs/identifier"},
+            "function": {"enum": [1, 2, 3, 4]},
+            "address": {"type": "integer", "minimum": 0, "maximum": 65535},
+            "data_type": {"enum": ["bool", "i16", "u16", "i32", "u32", "f32", "i64", "u64", "f64"]},
+            "byte_order": {"enum": ["AB", "BA", "ABCD", "BADC", "CDAB", "DCBA", "ABCDEFGH", "HGFEDCBA"]},
+            "scale": {"type": "number"},
+            "offset": {"type": "number"}
+          }
+        }
+      ]
+    },
+    "analog_point": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "source", "unit", "period_ms", "stale_ms", "channel", "mode", "scale", "offset"],
+      "properties": {
+        "id": {"$ref": "#/$defs/identifier"},
+        "source": {"const": "analog"},
+        "unit": {"type": "string", "maxLength": 16},
+        "period_ms": {"type": "integer", "minimum": 10, "maximum": 86400000},
+        "stale_ms": {"type": "integer", "minimum": 20, "maximum": 604800000},
+        "channel": {"type": "integer", "minimum": 1, "maximum": 4},
+        "mode": {"enum": ["0-10V", "4-20mA"]},
+        "scale": {"type": "number"},
+        "offset": {"type": "number"}
+      }
+    },
+    "digital_point": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "source", "unit", "period_ms", "stale_ms", "channel", "mode", "debounce_ms"],
+      "properties": {
+        "id": {"$ref": "#/$defs/identifier"},
+        "source": {"const": "digital"},
+        "unit": {"type": "string", "maxLength": 16},
+        "period_ms": {"type": "integer", "minimum": 10, "maximum": 86400000},
+        "stale_ms": {"type": "integer", "minimum": 20, "maximum": 604800000},
+        "channel": {"type": "integer", "minimum": 1, "maximum": 4},
+        "mode": {"enum": ["state", "counter", "frequency"]},
+        "debounce_ms": {"type": "integer", "minimum": 0, "maximum": 1000}
+      }
+    }
+  }
+}

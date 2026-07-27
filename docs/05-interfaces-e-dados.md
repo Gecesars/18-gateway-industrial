@@ -1,36 +1,135 @@
-# Interfaces e modelo de dados
+# Interfaces e dados EDGE-18
 
-## Interfaces
+## 1. Conectores previstos
 
-| ID | Interface | Contrato a documentar |
+| ID | Interface | Sinais | Domínio |
+|---|---|---|---|
+| J1 | alimentação | VIN+, VIN−, CHASSIS | 9–36 Vcc |
+| J2 | RS-485 A | A, B, GND_485A, SHIELD | isolado |
+| J3 | RS-485 B | A, B, GND_485B, SHIELD | isolado |
+| J4 | analógicas 1–2 | AI1, AI2, AGND_FIELD | campo comum |
+| J5 | analógicas 3–4 | AI3, AI4, AGND_FIELD | campo comum |
+| J6 | digitais 1–2 | DI1, DI2, FGND_DI | campo isolado |
+| J7 | digitais 3–4 | DI3, DI4, FGND_DI | campo isolado |
+| J8 | CAN | CANH, CANL, GND_CAN, SHIELD | isolado, fase 2 |
+| J9 | Ethernet | RJ45 blindado | magneticamente isolado |
+| J10 | USB serviço | USB-C 2.0 FS | lógica/serviço |
+| J11 | SWD | SWDIO, SWCLK, NRST, 3V3, GND | produção |
+
+A numeração é preliminar até o esquemático. Não montar cabo a partir desta
+tabela.
+
+## 2. Configuração
+
+O arquivo de configuração possui:
+
+- `schema_version`;
+- identidade lógica e site;
+- rede e tempo;
+- dispositivos;
+- pontos;
+- política de armazenamento;
+- broker e tópicos;
+- diagnóstico.
+
+A fonte normativa é `schemas/gateway-config.schema.json`. Campos desconhecidos
+são rejeitados no MVP para impedir interpretações silenciosas.
+
+## 3. Modelo de ponto
+
+| Campo | Tipo | Regra |
 |---|---|---|
-| IF-18-01 | Modbus RTU/TCP | direção, níveis, conector/protocolo e falhas a definir |
-| IF-18-02 | CAN futuro | direção, níveis, conector/protocolo e falhas a definir |
-| IF-18-03 | 4–20 mA/0–10 V | direção, níveis, conector/protocolo e falhas a definir |
-| IF-18-04 | pulso/contato | direção, níveis, conector/protocolo e falhas a definir |
-| IF-18-05 | Ethernet/Wi-Fi | direção, níveis, conector/protocolo e falhas a definir |
-| IF-18-06 | MQTT/REST | direção, níveis, conector/protocolo e falhas a definir |
+| `point_id` | string | único, 1–48 caracteres seguros para tópico |
+| `sequence` | uint64 | monotônico por dispositivo |
+| `timestamp_ms` | int64 | UTC Unix em ms; zero se não confiável |
+| `monotonic_ms` | uint64 | sempre presente desde o boot |
+| `value_type` | enum | bool, i64, u64, f64 ou string curta |
+| `value` | variante | não substitui qualidade |
+| `unit` | string | UCUM quando aplicável |
+| `quality` | uint32 | máscara documentada |
+| `source` | string | dispositivo/canal |
+| `config_revision` | uint32 | revisão que produziu o valor |
 
-Para cada interface elétrica serão registrados pinos, níveis absolutos,
-referência de terra, isolação, proteção, direção, estado em reset e chicote. Para
-cada protocolo serão registrados framing, versão, autenticação, timeout,
-repetição, idempotência e compatibilidade.
+## 4. Tópicos MQTT v1
 
-## Entidades e grandezas
+Prefixo:
 
-| ID | Dado | Metadados obrigatórios |
-|---|---|---|
-| D-18-01 | ponto/endereço/tipo/escala | unidade, faixa, qualidade e retenção a definir |
-| D-18-02 | valor/qualidade/timestamp | unidade, faixa, qualidade e retenção a definir |
-| D-18-03 | configuração/versionamento | unidade, faixa, qualidade e retenção a definir |
-| D-18-04 | evento/regra | unidade, faixa, qualidade e retenção a definir |
-| D-18-05 | diagnóstico | unidade, faixa, qualidade e retenção a definir |
+```text
+edge/v1/{tenant}/{site}/{device}/
+```
 
-## Regras de dados
+| Sufixo | Retain | QoS | Conteúdo |
+|---|---:|---:|---|
+| `inventory` | sim | 1 | hardware, versões e capacidades |
+| `state` | sim | 1 | online, boot ID, saúde resumida |
+| `telemetry` | não | 1 | lote de pontos |
+| `events` | não | 1 | mudança de estado, falha e auditoria |
+| `diagnostics` | não | 0/1 | métricas sem segredos |
 
-- valor inválido não é zero;
-- unidade e escala pertencem ao contrato;
-- dado atrasado ou reconstruído deve ser identificável;
-- identidade de dispositivo e calibração não podem ser inferidas pelo endereço;
-- alterações de schema exigem migração e teste de compatibilidade;
-- retenção e acesso devem respeitar a finalidade declarada.
+Comandos remotos não fazem parte do MQTT v1. Configuração remota futura terá
+canal separado, assinatura e política explícita.
+
+## 5. Envelope de telemetria
+
+Exemplo informativo:
+
+```json
+{
+  "schema": "edge.telemetry/1",
+  "device_id": "edge18-000001",
+  "boot_id": "9f462527",
+  "message_id": "0000000000018a42",
+  "sent_at_ms": 1785100000123,
+  "points": [
+    {
+      "point_id": "tank.level",
+      "sequence": 18720,
+      "timestamp_ms": 1785099999980,
+      "monotonic_ms": 623991,
+      "value_type": "f64",
+      "value": 73.2,
+      "unit": "%",
+      "quality": 0,
+      "source": "ai1",
+      "config_revision": 4
+    }
+  ]
+}
+```
+
+## 6. Idempotência
+
+`device_id + boot_id + message_id` identifica uma publicação. `point_id +
+sequence` identifica uma amostra. O backend aceita repetição por QoS 1 e não
+depende de entrega exatamente uma vez.
+
+## 7. REST local
+
+Recursos previstos:
+
+- `GET /v1/health`;
+- `GET /v1/inventory`;
+- `GET /v1/config`;
+- `PUT /v1/config/staging`;
+- `POST /v1/config/validate`;
+- `POST /v1/config/commit`;
+- `POST /v1/config/rollback`;
+- `GET /v1/diagnostics/export`.
+
+REST exige autenticação, limite de tamanho, timeout e log de auditoria. A API não
+expõe chave privada nem endpoint de comando físico.
+
+## 8. Modbus
+
+Um ponto Modbus define porta, escravo, função, endereço, quantidade, tipo,
+endian, escala, unidade, período, timeout, tentativas e idade máxima. Endereços
+internos são base zero. A UI pode exibir notação 4xxxx, mas deve converter de
+forma explícita.
+
+## 9. Compatibilidade
+
+- breaking changes incrementam a versão do schema/tópico;
+- consumidores devem ignorar qualidade desconhecida somente quando o bit for
+  declarado extensível;
+- firmware não promove configuração de versão superior;
+- migração nunca altera calibração sem registro separado.
